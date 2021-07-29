@@ -1,25 +1,51 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection.js');
-class Exercises extends Model {}
+const Exercise = require('./Exercise');
+const Score = require('./Score');
+const User = require('./User');
+const WorkoutExercise = require('./WorkoutExercise');
+const WorkoutHistory = require('./WorkoutHistory');
 
-Exercise.init(
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+// USER RELATIONS
+
+User.hasMany(WorkoutHistory, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE',
+});
+
+User.hasMany(Score, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE',
+});
+
+WorkoutHistory.belongsTo(User, {
+  foreignKey: 'user_id',
+});
+
+Score.belongsTo(User, {
+  foreignKey: 'user_id',
+});
+
+// WORKOUT HISTORY RELATIONS
+// WorkoutHistory.hasMany(WorkoutExercise, {
+//   foreignKey: 'workout_id',
+//   onDelete: 'CASCADE',
+// });
+
+Exercise.belongsToMany(WorkoutHistory, {
+  through: {
+    model: WorkoutExercise,
+    unique: false,
   },
-  {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'exercise',
-  }
-);
+
+  as: 'exercises_history',
+});
+
+WorkoutHistory.belongsToMany(Exercise, {
+  through: {
+    model: WorkoutExercise,
+    unique: false,
+  },
+
+  as: 'history_exercises',
+});
+
+module.exports = { Exercise, Score, User, WorkoutExercise, WorkoutHistory };

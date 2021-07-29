@@ -14,6 +14,7 @@ User.init(
     username: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     password: {
       type: DataTypes.STRING,
@@ -32,6 +33,7 @@ User.init(
     },
     height: {
       type: DataTypes.INTEGER,
+      allowNull: true,
     },
     weight_goal: {
       type: DataTypes.INTEGER,

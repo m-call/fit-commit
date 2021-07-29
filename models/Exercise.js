@@ -20,7 +20,7 @@ Exercise.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'exercises',
+    modelName: 'exercise',
   }
 );
 
