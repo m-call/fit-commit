@@ -1,6 +1,4 @@
-const { Scores } = require('../models');
-
-const scoreData = [
+[
   {
     overallScore: 1,
     weeklyScore: 1,
@@ -21,8 +19,4 @@ const scoreData = [
     weeklyScore: 4,
     monthlyScore: 0,
   },
-];
-
-const seedScore = () => Scores.bulkCreate(scoreData);
-
-module.exports = seedScore;
+]

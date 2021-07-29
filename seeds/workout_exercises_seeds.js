@@ -1,6 +1,4 @@
-const { WorkoutExercises } = require('../models');
-
-const workoutExercisesData = [
+[
   {
     repetitions: 1, 
     sets: 1, 
@@ -25,8 +23,4 @@ const workoutExercisesData = [
     weight: 140,
     time: 20,
   },
-];
-
-const seedworkoutExercise = () => WorkoutExercises.bulkCreate(workoutExercisesData);
-
-module.exports = seedworkoutExercise;
+]
