@@ -1,8 +1,8 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection.js');
-class Scores extends Model {}
+class Score extends Model {}
 
-Scores.init(
+Score.init(
   {
     week_id: {
       type: DataTypes.INTEGER,
@@ -41,4 +41,4 @@ Scores.init(
   }
 );
 
-module.exports = Scores;
+module.exports = Score;

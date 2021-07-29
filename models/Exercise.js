@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection.js');
-class Exercises extends Model {}
+class Exercise extends Model {}
 
 Exercise.init(
   {
@@ -24,4 +24,4 @@ Exercise.init(
   }
 );
 
-module.exports = Exercises;
+module.exports = Exercise;
