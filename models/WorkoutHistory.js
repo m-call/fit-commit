@@ -10,19 +10,19 @@ WorkoutHistory.init(
       autoIncrement: true,
       primaryKey: true,
     },
+    date: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isDate: true,
+      },
+    },
     user_id: {
       type: DataTypes.STRING,
       allowNull: false,
       references: {
         model: 'user',
         key: 'id',
-      },
-    },
-    date: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isDate: true,
       },
     },
   },

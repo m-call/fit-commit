@@ -39,7 +39,10 @@ User.init(
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    friend_id: {},
+    friend_id: {
+      type: DataTypes.ARRAY(DataTypes.INTEGER),
+      allowNull: true,
+    },
   },
   {
     hooks: {
@@ -61,7 +64,7 @@ User.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "user",
+    modelName: 'user',
   }
 );
 
