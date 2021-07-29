@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection.js');
-class Exercises extends Model {}
+class Exercise extends Model {}
 
 Exercise.init(
   {
@@ -20,8 +20,8 @@ Exercise.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'exercises',
+    modelName: 'exercise',
   }
 );
 
-module.exports = Exercises;
+module.exports = Exercise;
