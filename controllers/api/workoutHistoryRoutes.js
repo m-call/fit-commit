@@ -15,3 +15,11 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 module.exports = router;
+
+router.put('/:id', withAuth, async (req, res) => {
+  try {
+    const workoutData = await WorkoutHistory.findByPk({});
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
