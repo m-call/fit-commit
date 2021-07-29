@@ -40,7 +40,7 @@ User.init(
       allowNull: true,
     },
     friend_id: {
-      type: DataTypes.ARRAY,
+      type: DataTypes.ARRAY(DataTypes.INTEGER),
       allowNull: true,
     },
   },
