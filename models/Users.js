@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection.js');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection.js");
 
 class User extends Model {}
 
@@ -32,12 +32,13 @@ User.init(
     },
     height: {
       type: DataTypes.INTEGER,
+      allowNull: true,
     },
     weight_goal: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    friend_ids: {},
+    friend_id: {},
   },
   {
     hooks: {
@@ -59,7 +60,7 @@ User.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user',
+    modelName: "user",
   }
 );
 
