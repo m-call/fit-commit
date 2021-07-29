@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const { Exercise } = require('../../models');
 
-router.post('/', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
-        const exerciseData = await Exercise.create({
-            ...req.body
+        const exerciseData = await Exercise.findAll({
+            order: [['name', 'ASC']]
         });
         res.status(200).json(exerciseData);
     } catch (err) {
