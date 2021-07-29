@@ -1,0 +1,12 @@
+{{{display-chart chartData}}}
+
+<a href='/new_workout'><button>New Workout</button></a>
+
+{{#each workouts as |workout| }}
+    <div>{{workout.date}}</div>
+    <div>{{workout.points}}</div>
+    {{#each exercises as |exercise| }}
+        <div>{{exercise.name}}</div>
+        <div>{{exercise.points}}</div>
+    {{/each}}
+{{/each}}
