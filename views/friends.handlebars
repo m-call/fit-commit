@@ -1,7 +1,10 @@
 <h1>Friends</h1>
 {{#each friends as |friend| }}
     <div>
-        <span>{{friend.name}}</span>
-        <span>{{friend.score}}</span>
+        <a href={{friend.url}}><button>
+            <span>{{friend.name}}</span>
+            <span>{{friend.score}}</span>
+        </button></a>
+        
     </div>
 {{/each}}
