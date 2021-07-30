@@ -1,4 +1,29 @@
+{{!-- need to add funct for different exercises in same workout sesh --}}
 <h1>New Workout</h1>
-{{#each exercises as |exercise| }}
-    <button type="button" class="exercise-list">{{exercise.name}}</button>
-{{/each}}
+
+<div id='user-id' style="visibility: hidden;">{{user.id}}</div>
+
+
+<div>Select Exercise</div>
+<div id="exercie">
+    {{#each exercises as |exercise| }}
+        <button type="button" class="exercise-list">{{exercise.name}}</button>
+    {{/each}}
+</div>
+
+
+
+<label id="lifting-weight-label" for="weight">Weight</label>
+<input id="weight" value="weight of weights"/>
+
+<label id="lifting-sets-label" for="sets">Sets</label>
+<input id="sets" value="number of sets"/>
+
+<label id="lifting-reps-label" for="reps">Reps</label>
+<input id="reps" value="number of reps"/>
+
+<label id="cardio-label" for="cardio">Distance</label>
+<input id="cardio" value="distance ran/swum"/>
+
+<button id="submit">Submit Workout</button>
+

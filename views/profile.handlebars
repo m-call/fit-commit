@@ -1,6 +1,12 @@
+<nav class="navbar">
+    <a href={{profileUrl user.id}}>Profile</a>
+    <a href={{friendsUrl user.id}}>Friends</a>
+    <a href='/leaderboard'>Leaderboard</a>
+</nav>
+
 {{{display-chart chartData}}}
 
-<a href='/new_workout'><button>New Workout</button></a>
+<a href={{newWorkoutUrl user.id}}>New Workout</a>
 
 {{#each workouts as |workout| }}
     <div>{{workout.date}}</div>
