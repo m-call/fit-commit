@@ -2,11 +2,11 @@ const Exercise = require('./Exercise');
 const Score = require('./Score');
 const User = require('./User');
 const WorkoutExercise = require('./WorkoutExercise');
-const WorkoutHistory = require('./WorkoutHistory');
+const Workout = require('./Workout');
 
 // USER RELATIONS
 
-User.hasMany(WorkoutHistory, {
+User.hasMany(Workout, {
   foreignKey: 'user_id',
   onDelete: 'CASCADE',
 });
@@ -16,7 +16,7 @@ User.hasMany(Score, {
   onDelete: 'CASCADE',
 });
 
-WorkoutHistory.belongsTo(User, {
+Workout.belongsTo(User, {
   foreignKey: 'user_id',
 });
 
@@ -30,22 +30,22 @@ Score.belongsTo(User, {
 //   onDelete: 'CASCADE',
 // });
 
-Exercise.belongsToMany(WorkoutHistory, {
+Exercise.belongsToMany(Workout, {
   through: {
     model: WorkoutExercise,
     unique: false,
   },
 
-  as: 'exercises_history',
+  as: 'exercise_workout',
 });
 
-WorkoutHistory.belongsToMany(Exercise, {
+Workout.belongsToMany(Exercise, {
   through: {
     model: WorkoutExercise,
     unique: false,
   },
 
-  as: 'history_exercises',
+  as: 'workout_exercise',
 });
 
-module.exports = { Exercise, Score, User, WorkoutExercise, WorkoutHistory };
+module.exports = { Exercise, Score, User, WorkoutExercise, Workout };

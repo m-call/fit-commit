@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection.js");
+const bcrypt = require('bcrypt');
 
 class User extends Model {}
 
@@ -39,10 +40,16 @@ User.init(
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    friend_id: {
-      type: DataTypes.ARRAY(DataTypes.INTEGER),
-      allowNull: true,
-    },
+    // friend_id: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    //   get: function () {
+    //     return JSON.parse(this.getDataValue('friend_id'));
+    //   },
+    //   set: function (val) {
+    //     return this.setDataValue('friend_id', JSON.stringify(val));
+    //   },
+    // },
   },
   {
     hooks: {
