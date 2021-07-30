@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { WorkoutHistory } = require('../../models');
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const newWorkout = await WorkoutHistory.create({
       ...req.body,
@@ -14,12 +14,12 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-module.exports = router;
-
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const workoutData = await WorkoutHistory.findByPk({});
   } catch (err) {
     res.status(400).json(err);
   }
 });
+
+module.exports = router;
