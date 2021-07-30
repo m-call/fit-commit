@@ -40,16 +40,16 @@ User.init(
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    // friend_id: {
-    //   type: DataTypes.STRING,
-    //   allowNull: true,
-    //   get: function () {
-    //     return JSON.parse(this.getDataValue('friend_id'));
-    //   },
-    //   set: function (val) {
-    //     return this.setDataValue('friend_id', JSON.stringify(val));
-    //   },
-    // },
+    friend_id: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      get: function () {
+        return JSON.parse(this.getDataValue('friend_id'));
+      },
+      set: function (val) {
+        return this.setDataValue('friend_id', JSON.stringify(val));
+      },
+    },
   },
   {
     hooks: {
