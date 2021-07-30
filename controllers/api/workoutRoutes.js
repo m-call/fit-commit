@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-})
+});
 
 // Get one workout
 router.get('/:id', async (req, res) => {
@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
   try {
     const newWorkout = await Workout.create({
       ...req.body,
-      user_id: req.session.user_id,
+      // user_id: req.session.user_id, TODO: ADD BACK WHEN SESSIONS ARE SET UP
     });
 
     res.status(200).json(newWorkout);
