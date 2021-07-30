@@ -5,10 +5,10 @@ const userRoutes = require('./userRoutes');
 const workoutExerciseRoutes = require('./workoutExerciseRoutes');
 const workoutHistoryRoutes = require('./workoutHistoryRoutes');
 
-router.use('/', exerciseRoutes);
-router.use('/leaderboard', scoreRoutes);
-router.use('/', userRoutes);
-router.use('/', workoutExerciseRoutes);
-router.use('/profile', workoutHistoryRoutes);
+router.use('/exercises', exerciseRoutes);
+router.use('/scores', scoreRoutes);
+router.use('/users', userRoutes);
+router.use('/workouts', workoutExerciseRoutes);
+router.use('/workouthistory', workoutHistoryRoutes);
 
 module.exports = router;
