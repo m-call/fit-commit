@@ -9,6 +9,6 @@ router.use('/exercises', exerciseRoutes);
 router.use('/scores', scoreRoutes);
 router.use('/users', userRoutes);
 router.use('/workouts', workoutExerciseRoutes);
-router.use('/workouthistory', workoutHistoryRoutes);
+router.use('/workouthistory', workoutRoutes);
 
 module.exports = router;
