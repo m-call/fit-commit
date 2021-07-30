@@ -3,7 +3,7 @@ const exerciseRoutes = require('./exerciseRoutes');
 const scoreRoutes = require('./scoreRoutes');
 const userRoutes = require('./userRoutes');
 const workoutExerciseRoutes = require('./workoutExerciseRoutes');
-const workoutRoutes = require('./workoutHistoryRoutes');
+const workoutRoutes = require('./workoutRoutes');
 
 router.use('/exercises', exerciseRoutes);
 router.use('/scores', scoreRoutes);
