@@ -10,14 +10,16 @@ Score.init(
       validate: {
         isDate: true,
       },
+      defaultValue: 0,
     },
     user_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'user',
         key: 'id',
       },
+      defaultValue: 0,
     },
     overall_score: {
       type: DataTypes.INTEGER,

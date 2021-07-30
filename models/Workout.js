@@ -1,8 +1,8 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection.js');
-class WorkoutHistory extends Model {}
+class Workout extends Model {}
 
-WorkoutHistory.init(
+Workout.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -18,7 +18,7 @@ WorkoutHistory.init(
       },
     },
     user_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: 'user',
@@ -31,8 +31,8 @@ WorkoutHistory.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'workouthistory',
+    modelName: 'workout',
   }
 );
 
-module.exports = WorkoutHistory;
+module.exports = Workout;
