@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Workout, WorkoutExercise, Exercise } = require('../../models');
 
 // Get all workouts
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const workoutData = await Workout.findAll();
     res.status(200).json(workoutData);
@@ -12,7 +12,7 @@ router.get('/', withAuth, async (req, res) => {
 })
 
 // Get one workout
-router.get('/:id', withAuth, async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const workoutData = await Workout.findByPk(req.params.id, {
       include: [{ model: Exercise, through: WorkoutExercise, as: 'workout_exercise'}]
@@ -21,7 +21,7 @@ router.get('/:id', withAuth, async (req, res) => {
 })
 
 // Add a workout
-router.post('/', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const newWorkout = await Workout.create({
       ...req.body,
@@ -34,10 +34,8 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-module.exports = router;
-
 // Update a workout
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const workoutData = await Workout.findByPk({});
   } catch (err) {
@@ -46,3 +44,6 @@ router.put('/:id', withAuth, async (req, res) => {
 });
 
 // Delete a workout
+
+
+module.exports = router;
