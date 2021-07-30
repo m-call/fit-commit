@@ -30,8 +30,9 @@ WorkoutExercise.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'workouthistory',
+        model: 'workout',
         key: 'id',
+        unique: false,
       },
     },
     exercise_id: {
@@ -40,6 +41,7 @@ WorkoutExercise.init(
       references: {
         model: 'exercise',
         key: 'id',
+        unique: false,
       },
     },
   },

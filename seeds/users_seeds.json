@@ -5,7 +5,7 @@
     "full_name": "Groot",
     "weight": 140,
     "height": 65,
-    "friend_id": [1,2,3,4]
+    "friend_id": [2, 3, 4]
   },
   {
     "username": "user2",
@@ -13,7 +13,7 @@
     "full_name": "Rocket Racoon",
     "weight": 150,
     "height": 70,
-    "friend_id": [1,2,3,4]
+    "friend_id": [1, 3, 4]
   },
   {
     "username": "user3",
@@ -21,7 +21,7 @@
     "full_name": "Nebula",
     "weight": 200,
     "height": 80,
-    "friend_id": [1,2,3,4]
+    "friend_id": [2, 1, 4]
   },
   {
     "username": "user4",
@@ -29,6 +29,6 @@
     "full_name": "Gamora",
     "weight": 120,
     "height": 65,
-    "friend_id": [1,2,3,4]
+    "friend_id": [2, 3, 1]
   }
 ]
