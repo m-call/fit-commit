@@ -15,10 +15,21 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const workoutData = await Workout.findByPk(req.params.id, {
-      include: [{ model: Exercise, through: WorkoutExercise, as: 'workout_exercise'}]
-    })
+      include: [
+        { model: Exercise, through: WorkoutExercise, as: 'workout_exercise' },
+      ],
+    });
+
+    if (!workoutData) {
+      res.status(404).json({ message: 'No workout found with this id!' });
+      return;
+    }
+
+    res.status(200).json(workoutData);
+  } catch (err) {
+    res.status(500).json(err);
   }
-})
+});
 
 // Add a workout
 router.post('/', async (req, res) => {
@@ -35,15 +46,35 @@ router.post('/', async (req, res) => {
 });
 
 // Update a workout
-router.put('/:id', async (req, res) => {
+// router.put('/:id', async (req, res) => {
+//   try {
+//     const workoutData = await Workout.findByPk(req.params.id, {
+
+//     });
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
+// FOR NOW NO UPDATING EXISTING WORKOUTS TOO MUCH WORK
+
+// Delete a workout
+router.delete('/:id', async (req, res) => {
   try {
-    const workoutData = await Workout.findByPk({});
+    const workoutData = await Workout.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (!workoutData) {
+      res.status(404).json({ message: 'No workout found with this id' });
+      return;
+    }
+
+    res.status(200).json(workoutData);
   } catch (err) {
     res.status(400).json(err);
   }
 });
-
-// Delete a workout
-
 
 module.exports = router;
