@@ -1,48 +1,44 @@
-const newAddFriendHandler = async (event) => {
-    event.preventDefault();
-  
-    const name = document.querySelector('#project-name').value.trim();
-    const needed_funding = document.querySelector('#project-funding').value.trim();
-    const description = document.querySelector('#project-desc').value.trim();
-  
-    if (name && needed_funding && description) {
-      const response = await fetch(`/api/projects`, {
-        method: 'POST',
-        body: JSON.stringify({ name, needed_funding, description }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-  
-      if (response.ok) {
-        document.location.replace('/profile');
-      } else {
-        alert('Failed to create project');
+const populateFriendList = async () => {
+  // console.log('tesdfasdf');
+  const friendList = document.querySelector('#display-friends');
+  const friendLinks = document.querySelector('#display-friends-list');
+  const friends = friendList.children;
+  numFriends = friends.length
+  // console.log(typeof friends[1].innerHTML);
+  for(var i=0; i<numFriends; i++){
+    fetch(`/api/users/${friends[i].innerHTML}`).then((response) => {
+      // return response.text()
+      // console.log(response.json());
+      return response.json();
+    }).then((res) => {
+      console.log(res);
+      let friend = document.createElement("p");  
+      friend.innerHTML = `${res.full_name}`;
+      
+      try{
+        friend.innerHTML += ` ${res.scores[0].weekly_score}`
       }
-    }
-  };
-  
-  const delButtonHandler = async (event) => {
-    if (event.target.hasAttribute('data-id')) {
-      const id = event.target.getAttribute('data-id');
-  
-      const response = await fetch(`/api/projects/${id}`, {
-        method: 'DELETE',
-      });
-  
-      if (response.ok) {
-        document.location.replace('/profile');
-      } else {
-        alert('Failed to delete project');
+      catch{
+        friend.innerHTML += ` 0`;
       }
-    }
-  };
+
+      friendLinks.appendChild(friend); 
+    });
+  }
+}
+
+
+
+
+
+populateFriendList();
+
+
   
-  document
-    .querySelector('.new-project-form')
-    .addEventListener('submit', newFormHandler);
-  
-  document
-    .querySelector('.project-list')
-    .addEventListener('click', delButtonHandler);
-  
+
+
+
+
+
+
+

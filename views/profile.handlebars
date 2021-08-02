@@ -4,17 +4,35 @@
     <a href='/leaderboard'>Leaderboard</a>
 </nav>
 
-{{{display-chart chartData}}}
+<h2>Welcome {{user.full_name}}</h2>
+
+{{!-- {{{display-chart chartData}}} --}}
+
+<h3 id='current-score'>Current Score: {{getUserScore user}}</h3>
 
 <a href={{newWorkoutUrl user.id}}>New Workout</a>
 
-{{#each workouts as |workout| }}
+{{!-- {{#each workouts as |workout| }}
     <div>{{workout.date}}</div>
     <div>{{workout.points}}</div>
     {{#each exercises as |exercise| }}
         <div>{{exercise.name}}</div>
         <div>{{exercise.points}}</div>
     {{/each}}
-{{/each}}
+{{/each}} --}}
 
-{{!-- <script src="./js/profile.js"></script> --}}
+<p>Friends</p>
+<div id='display-friends' style="display: none">
+    {{#each user.friend_id as |friend|}}
+        <div>{{showFriend friend}}</div>
+    {{/each}}
+</div>
+<div id='display-friends-list'>
+
+</div>
+
+<p>{{printUser user}}</p>
+
+<script src="./js/profile.js"></script>
+
+
