@@ -14,6 +14,9 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@700&display=swap" rel="stylesheet">
   <title>FitCommit</title>
  
 </head>
@@ -25,7 +28,13 @@
   -o-background-size: cover;
   background-size: cover;">
   <div class="">
-  
+    
+    <nav class="navbar">
+      <a href={{profileUrl user.id}}>Profile</a>
+      <a href={{friendsUrl user.id}}>Friends</a>
+      <a href='/leaderboard'>Leaderboard</a>
+    </nav>
+
     <header class="">
       <br>
       <h1 id="Title">FIT COMMIT</h1>

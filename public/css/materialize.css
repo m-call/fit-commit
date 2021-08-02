@@ -1,15 +1,15 @@
 /* Title */
 #Title {
   /* font-family: 'Permanent Marker', cursive; */
-  font-family: "Kanit", sans-serif;
+  font-family: "Stardos Stencil", sans-serif;
 
   color: white;
-  padding-left: 2vw;
+  padding-left: 4vw;
 }
 /* login labels */
 #login {
   color: white;
-  padding-left: 2vw;
+  padding-left: 1vw;
   font-size: large;
 }
 
@@ -44,10 +44,12 @@
 
 #welcome {
   color: white;
+  font-family: "Stardos Stencil", sans-serif;
 }
 
 #current-score {
   color: white;
+  font-family: "Stardos Stencil", sans-serif;
 }
 
 #new-workout-button {
