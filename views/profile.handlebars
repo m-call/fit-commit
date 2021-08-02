@@ -4,13 +4,15 @@
     <a href='/leaderboard'>Leaderboard</a>
 </nav>
 
-<h2>Welcome {{user.full_name}}</h2>
+<h2 id='welcome'>Welcome {{user.full_name}}</h2>
 
 {{!-- {{{display-chart chartData}}} --}}
 
 <h3 id='current-score'>Current Score: {{getUserScore user}}</h3>
 
-<a href={{newWorkoutUrl user.id}}>New Workout</a>
+<div class="form-group">
+    <button class="btn btn-primary" type="submit" id="new-workout-button" style="background-color:rgb(196, 39, 39);">Add Workout</button>
+</div>
 
 {{!-- {{#each workouts as |workout| }}
     <div>{{workout.date}}</div>
@@ -21,8 +23,7 @@
     {{/each}}
 {{/each}} --}}
 
-<p>Friends</p>
-
+<p id='friends'>Friends</p>
 <div id='display-friends' style="display: none">
     {{#each user.friend_id as |friend|}}
         <div>{{showFriend friend}}</div>
