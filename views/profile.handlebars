@@ -1,8 +1,8 @@
-<nav class="navbar">
+{{!-- <nav class="navbar">
     <a href={{profileUrl user.id}}>Profile</a>
     <a href={{friendsUrl user.id}}>Friends</a>
     <a href='/leaderboard'>Leaderboard</a>
-</nav>
+</nav> --}}
 
 <h2 id='welcome'>Welcome {{user.full_name}}</h2>
 
@@ -35,6 +35,18 @@
 
 <p>{{printUser user}}</p>
 
-<script src="./js/profile.js"></script>
+{{!-- workout history --}}
+<p>Workout History</p>
+<div> 
+    {{#each workouts as |workout| }}
+    <div>{{workout.date}}</div>
+    {{!-- <div>{{workout.points}}</div> --}}
+    {{!-- {{#each exercises as |exercise| }}
+        <div>{{exercise.name}}</div>
+        <div>{{exercise.points}}</div>
+    {{/each}} --}}
+    {{/each}}
+</div>
 
+<script src="./js/profile.js"></script>
 

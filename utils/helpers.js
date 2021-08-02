@@ -25,6 +25,11 @@ module.exports = {
     printUser: (user) => {
         console.log(user);
     },
+    //added
+    printScores: (score) => {
+        console.log(score);
+    },
+
     showFriend: (friend) => {
         return friend;
     },

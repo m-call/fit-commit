@@ -27,6 +27,11 @@ const populateFriendList = async () => {
   }
 }
 
+// const displayWorkoutHistory = async(event) => 
+// {
+
+// }
+
 const newWorkoutHandler = async (event) => {
   event.preventDefault();
 
