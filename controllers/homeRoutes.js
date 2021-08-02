@@ -89,30 +89,30 @@ router.get('/',  (req, res) => {
 
 
 
-// User's personal dashboard. Renders the addWorkout.handlebar 
-router.get('/profile', withAuth, async (req, res) => {
-    try {
-      // Find the logged in user based on the session ID
-      const userData = await User.findByPk(req.session.user_id, {
-        attributes: { exclude: ['password'] },
-        include: [{ model: Workout}],
-      });
+// // User's personal dashboard. Renders the addWorkout.handlebar 
+// router.get('/profile', withAuth, async (req, res) => {
+//     try {
+//       // Find the logged in user based on the session ID
+//       const userData = await User.findByPk(req.session.user_id, {
+//         attributes: { exclude: ['password'] },
+//         include: [{ model: Workout}],
+//       });
   
-      const user = userData.get({ plain: true });
-      console.log('================================'); 
-      console.log('USER: ', user); 
-    //   console.log(user); 
-      // profile.handlebars
-      res.render('profile', {
-        ...user,
-        logged_in: true
-      });
-    } catch (err) {
-      console.log('IN DASHBOARD ERROR'); 
-      res.status(500).json(err);
+//       const user = userData.get({ plain: true });
+//       console.log('================================'); 
+//       console.log('USER: ', user); 
+//     //   console.log(user); 
+//       // profile.handlebars
+//       res.render('profile', {
+//         ...user,
+//         logged_in: true
+//       });
+//     } catch (err) {
+//       console.log('IN DASHBOARD ERROR'); 
+//       res.status(500).json(err);
       
-    }
-  });
+//     }
+//   });
 
 
 router.get('/leaderboard', async (req, res) => {
