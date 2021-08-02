@@ -44,7 +44,6 @@ User.init(
       type: DataTypes.STRING,
       allowNull: true,
       get: function () {
-        // return JSON.stringify(this.getDataValue('friend_id'));
         return JSON.parse(this.getDataValue('friend_id'));
       },
       set: function (val) {
