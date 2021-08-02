@@ -14,23 +14,32 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@700&display=swap" rel="stylesheet">
   <title>FitCommit</title>
  
 </head>
 
 <body>
-  <div style= "background-image: url(http://urvi.com/wp-content/uploads/2016/08/Girl_Muscle1-EPOC.jpg); no-repeat center center fixed; 
+  <div class="background" style="background-image: url(http://urvi.com/wp-content/uploads/2016/08/Girl_Muscle1-EPOC.jpg); no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;">
   <div class="">
-     <nav class="navbar" id="top-nav">
-    <a href={{profileUrl user.id}}>Profile</a>
-    <a href={{friendsUrl user.id}}>Friends</a>
-    <a href='/leaderboard'>Leaderboard</a>
-    <a href='/news'>News</a>
+
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo"><i class="material-icons" id="icon">fitness_center</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href={{profileUrl user.id}}>Profile</a></li>
+          <li><a href={{friendsUrl user.id}}>Friends</a></li>
+          <li><a href='/leaderboard'>Leaderboard</a></li>
+        </ul>
+      </div>
     </nav>
+
     <header class="">
       <br>
       <h1 id="Title">FIT COMMIT</h1>
