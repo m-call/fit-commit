@@ -1,3 +1,21 @@
+#top-nav
+{
+  /* do not display when user is logging in*/
+  /* display: none; */
+}
+
+.section
+{
+  color:white; 
+}
+/* Sub-Titles for each page */
+#Title-2
+{
+  font-family: "Kanit", sans-serif;
+  font-size: x-large;
+  color: white;
+  padding-left: 2vw;
+}
 /* Title */
 #Title {
   /* font-family: 'Permanent Marker', cursive; */
@@ -3103,6 +3121,7 @@ table,
 th,
 td {
   border: none;
+  color:white;
 }
 
 table {
