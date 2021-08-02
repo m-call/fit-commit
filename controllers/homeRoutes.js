@@ -2,20 +2,28 @@ const router = require('express').Router();
 const { User, Workout, Score } = require('../models');
 const withAuth = require('../utils/auth');
 
+// router.get('/profile', async (req, res) => {
 router.get('/profile', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
     //findOne({ where: { email: req.body.email } });
-
-    const userData = await User.findOne({
-        where: { id: 1 },
-        include: Score,
-    });
     
+    const userData = await User.findOne({
+        where: { id: req.session.user_id },
+        // where: { id: 1 },
+        include: Score, Workout,
+    });
+
+    const workoutData = await Workout.findAll({
+        where: { user_id: req.session.user_id },
+        // include: Score, Workout,
+    });
+    console.log('workout data', workoutData);
 
     // // Serialize data so the template can read it
     // const projects = projectData.map((project) => project.get({ plain: true }));
     const user = userData.get({ plain: true });
+    // const user = userData.get({ plain: true });
 
     // Pass serialized data and session flag into template
     res.render('profile', { 
@@ -91,11 +99,14 @@ router.get('/',  (req, res) => {
 
 // // User's personal dashboard. Renders the addWorkout.handlebar 
 // router.get('/profile', withAuth, async (req, res) => {
+// User's personal dashboard. Renders the addWorkout.handlebar 
+// router.get('/profile/:id', withAuth, async (req, res) => {
 //     try {
 //       // Find the logged in user based on the session ID
 //       const userData = await User.findByPk(req.session.user_id, {
 //         attributes: { exclude: ['password'] },
 //         include: [{ model: Workout}],
+//         include: [{ model: Workout, Score}],
 //       });
   
 //       const user = userData.get({ plain: true });
@@ -137,33 +148,6 @@ router.get('/leaderboard', async (req, res) => {
         console.log(err);
         res.status(500).json(err);
       }
-
-
-
-
-    // try {
-    //     const dbleaderboardData = await Users.findByPk(req.params.id, {
-    //       include: [
-    //         {
-    //           model: Score,
-    //           attributes: [
-    //             'user_id',
-    //             'overall_score',
-    //             'weekly_score',
-    //             'monthly_score',
-    //             'filename',
-    //             'description',
-    //           ],
-    //         },
-    //       ],
-    //     });
-    
-    //     const usersLb = dbleaderboardData.get({ plain: true });
-    //     res.render('leaderboard', { usersLb });
-    //   } catch (err) {
-    //     console.log(err);
-    //     res.status(500).json(err);
-    //   }
 
 }); 
 

@@ -3,7 +3,7 @@ const populateFriendList = async () => {
   const friendList = document.querySelector('#display-friends');
   const friendLinks = document.querySelector('#display-friends-list');
   const friends = friendList.children;
-  numFriends = friends.length
+  numFriends = friends.length;
   // console.log(typeof friends[1].innerHTML);
   for(var i=0; i<numFriends; i++){
     fetch(`/api/users/${friends[i].innerHTML}`).then((response) => {
@@ -59,10 +59,6 @@ const newWorkoutHandler = async (event) => {
 document
   .querySelector('#new-workout-button')
   .addEventListener('submit', newWorkoutHandler);
-
-
-
-
 
 populateFriendList();
 
