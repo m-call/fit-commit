@@ -10,10 +10,6 @@
 
 <h3 id='current-score'>Current Score: {{getUserScore user}}</h3>
 
-<div class="form-group">
-    <button class="btn btn-primary" type="submit" id="new-workout-button" style="background-color:rgb(196, 39, 39);">Add Workout</button>
-</div>
-
 {{!-- {{#each workouts as |workout| }}
     <div>{{workout.date}}</div>
     <div>{{workout.points}}</div>
@@ -34,6 +30,23 @@
 </div>
 
 <p>{{printUser user}}</p>
+
+<p id="Title">Add a new workout!</p>
+
+<div class="input-field white col s12" style="width: 350px;">
+    <select>
+        <option value="" disabled selected>Choose your workout</option>
+        <option value="1">test1</option>
+        <option value="2">test2</option>
+        <option value="3">test3</option>
+        <option value="4">test4</option>
+    </select>
+    <label>Workout Select</label>
+</div>
+
+<div class="form-group">
+    <button class="btn btn-primary" type="submit" id="new-workout-button" style="background-color:rgb(196, 39, 39);">Add Workout</button>
+</div>
 
 <script src="./js/profile.js"></script>
 
