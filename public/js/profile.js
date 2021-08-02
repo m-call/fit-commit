@@ -26,6 +26,11 @@ const populateFriendList = async () => {
     });
   }
 }
+
+
+
+
+
 populateFriendList();
 
 

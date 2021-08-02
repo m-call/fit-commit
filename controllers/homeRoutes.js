@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Workout } = require('../models');
+const { User, Workout, Score } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/profile', async (req, res) => {
@@ -9,12 +9,7 @@ router.get('/profile', async (req, res) => {
 
     const userData = await User.findOne({
         where: { id: 1 },
-        // include: [
-        //     {
-        //     model: User,
-        //     attributes: ['full_name'],
-        //     },
-        // ],
+        include: Score,
     });
     
 

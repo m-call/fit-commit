@@ -27,5 +27,9 @@ module.exports = {
     },
     showFriend: (friend) => {
         return friend;
+    },
+    getUserScore: (user) => {
+        let lastIndex = user.scores.length-1;
+        return user.scores[lastIndex].weekly_score;
     }
   };
