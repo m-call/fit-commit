@@ -6,6 +6,12 @@
   color: white;
   padding-left: 4vw;
 }
+
+#icon {
+  font-size: 60px;
+  margin-left: 10px;
+}
+
 /* login labels */
 #login {
   color: white;
