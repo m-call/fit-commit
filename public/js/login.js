@@ -12,7 +12,8 @@ const loginFormHandler = async (event) => {
   
     if (username && password) {
       // Send a POST request to the API endpoint
-      console.log('Login post in login.js'); 
+      console.log('username: ', username); 
+      console.log('pass', password); 
       // const response = await fetch('/api/users/login', {
       const response = await fetch('/api/users/login', {
         method: 'POST',
@@ -41,7 +42,9 @@ const loginFormHandler = async (event) => {
   
     // if (name && username && password) {
       if (username && password) {
-      const response = await fetch('/api/users', {
+      console.log('username: ', username); 
+      console.log('pass:', password); 
+      const response = await fetch('/api/users/signup', {
         method: 'POST',
         body: JSON.stringify({ username, password }),
         headers: { 'Content-Type': 'application/json' },

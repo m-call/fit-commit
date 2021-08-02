@@ -7,12 +7,13 @@ const withAuth = require('../utils/auth');
 //homeRoutes
 // Login:: render the login.handlebars page on homeroute page 
 router.get('/',  (req, res) => {
-    res.render('login')
-})
+    res.render('login'); 
+}); 
+
 
 
 // User's personal dashboard. Renders the addWorkout.handlebar 
-router.get('/profile', withAuth, async (req, res) => {
+router.get('/profile/:id', withAuth, async (req, res) => {
     try {
       // Find the logged in user based on the session ID
       const userData = await User.findByPk(req.session.user_id, {

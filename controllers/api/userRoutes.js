@@ -1,16 +1,17 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const bcrypt = require('bcrypt'); 
 
-router.post('/', async (req, res) => {
+router.post('/signup', async (req, res) => {
   try {
     const userData = await User.create(req.body);
 
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
+    // req.session.save(() => {
+    //   req.session.user_id = userData.id;
+    //   req.session.logged_in = true;
 
-      res.status(200).json(userData);
-    });
+    //   res.status(200).json(userData);
+    // });
   } catch (err) {
     res.status(400).json(err);
   }
@@ -31,8 +32,18 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect username or password, please try again' });
       return;
     }
-    
-    const validPassword = await userData.checkPassword(req.body.password);
+    // // hash the incoming password 
+    // function checkPassword(password)
+    // {
+    //   var passGood = false; 
+    //   if(userData.password == password)
+    //   {
+    //     return passGood = true; 
+    //   }
+    // }
+    // const validPassword = await checkPassword(req.body.password);
+
+    const validPassword = await bcrypt.compareSync(req.body.password, userData.password);
     console.log("========================="); 
     console.log(validPassword); 
     if (!validPassword) {
@@ -49,6 +60,7 @@ router.post('/login', async (req, res) => {
       res.json({ user: userData, message: 'You are now logged in!' });
     });
   } catch (err) {
+    console.log(err); 
     res.status(400).json(err);
   }
 });
