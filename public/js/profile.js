@@ -6,14 +6,22 @@ const populateFriendList = async () => {
   numFriends = friends.length
   // console.log(typeof friends[1].innerHTML);
   for(var i=0; i<numFriends; i++){
-    fetch(`/api/users/${friends[i].innerHTML}`).then(function(response) {
+    fetch(`/api/users/${friends[i].innerHTML}`).then((response) => {
       // return response.text()
       // console.log(response.json());
       return response.json();
-    }).then(function(res) {
+    }).then((res) => {
       console.log(res);
       let friend = document.createElement("p");  
-      friend.innerHTML = `${res.full_name}`;     
+      friend.innerHTML = `${res.full_name}`;
+      
+      try{
+        friend.innerHTML += ` ${res.scores[0].weekly_score}`
+      }
+      catch{
+        friend.innerHTML += ` 0`;
+      }
+
       friendLinks.appendChild(friend); 
     });
   }

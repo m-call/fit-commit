@@ -33,13 +33,8 @@ app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-<<<<<<< HEAD
 app.use(express.static(path.join(__dirname, 'public')));
 
-=======
-// uncommented 
-app.use(express.static(path.join(__dirname, 'public')));
->>>>>>> 63c06745681e429cc6379832a5c55fcefb103ee4
 
 app.use(routes);
 

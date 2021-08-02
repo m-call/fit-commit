@@ -1,10 +1,11 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Score } = require('../../models');
 
 router.get('/:id', async (req, res) => {
   try {
       const userData = await User.findOne({
           where: { id: req.params.id },
+          include: Score
       });
       res.status(200).json(userData);
   } catch (err) {
