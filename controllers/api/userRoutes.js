@@ -1,6 +1,17 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+router.get('/:id', async (req, res) => {
+  try {
+      const userData = await User.findOne({
+          where: { id: req.params.id },
+      });
+      res.status(200).json(userData);
+  } catch (err) {
+      res.status(500).json(err);
+  }
+});
+
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
