@@ -1,3 +1,8 @@
+$(document).ready(function(){
+  $('.carousel').carousel();
+});
+
+
 const loginFormHandler = async (event) => {
     event.preventDefault();
   
@@ -7,6 +12,9 @@ const loginFormHandler = async (event) => {
   
     if (username && password) {
       // Send a POST request to the API endpoint
+      console.log('username: ', username); 
+      console.log('pass', password); 
+      // const response = await fetch('/api/users/login', {
       const response = await fetch('/api/users/login', {
         method: 'POST',
         body: JSON.stringify({ username, password }),
@@ -15,6 +23,8 @@ const loginFormHandler = async (event) => {
   
       if (response.ok) {
         // If successful, redirect the browser to the profile page
+        console.log('============================'); 
+        console.log('successful login!'); 
         document.location.replace('/profile');
       } else {
         alert(response.statusText);
@@ -25,26 +35,32 @@ const loginFormHandler = async (event) => {
   const signupFormHandler = async (event) => {
     event.preventDefault();
   
-    const name = document.querySelector('#name-signup').value.trim();
+    // const name = document.querySelector('#name-signup').value.trim();
     // const email = document.querySelector('#email-signup').value.trim();
     const username = document.querySelector('#username-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
   
-    if (name && username && password) {
-      const response = await fetch('/api/users', {
+    // if (name && username && password) {
+      if (username && password) {
+      console.log('username: ', username); 
+      console.log('pass:', password); 
+      const response = await fetch('/api/users/signup', {
         method: 'POST',
-        body: JSON.stringify({ name, username, password }),
+        body: JSON.stringify({ username: username, password: password }),
         headers: { 'Content-Type': 'application/json' },
       });
   
       if (response.ok) {
         document.location.replace('/profile');
+        console.log('everything is all good'); 
       } else {
         alert(response.statusText);
+        console.log('THIS IS AN ERROR'); 
       }
     }
   };
   
+      
   document
     .querySelector('.login-form')
     .addEventListener('submit', loginFormHandler);

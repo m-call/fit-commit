@@ -7,8 +7,8 @@ router.post('/', async (req, res) => {
         console.log(req.body)
       const newScore = await Score.create({
         ...req.body,
-        // user_id: req.session.user_id,
-        // week_id: req.session.week_id,
+        user_id: req.session.user_id,
+        week_id: req.session.week_id,
       });
   
       res.status(200).json(newScore);
