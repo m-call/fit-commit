@@ -7,6 +7,10 @@
   padding-left: 4vw;
 }
 
+.nav-wrapper {
+  background-color: rgb(196, 39, 39);
+}
+
 #icon {
   font-size: 60px;
   margin-left: 10px;
