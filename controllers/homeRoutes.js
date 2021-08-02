@@ -2,6 +2,9 @@ const router = require('express').Router();
 const { User, Workout, Score } = require('../models');
 const withAuth = require('../utils/auth');
 
+router.get('/news', async (req, res) => {
+    res.render('news'); 
+}); 
 // router.get('/profile', async (req, res) => {
 router.get('/profile', async (req, res) => {
   try {
@@ -120,18 +123,30 @@ router.get('/',  (req, res) => {
 router.get('/leaderboard', async (req, res) => {
     try {
         const dbLeaderboardData = await User.findAll({
-          include: [
-            {
-              model: Score
-            //   attributes: ['filename', 'description'],
-            },
-          ],
+          include: Score,
+          order: [
+            // We start the order array with the model we want to sort
+            [Score, 'weekly_score', 'DESC']
+          ]
+          
+          // [
+          //   {
+          //     model: Score
+          //   //   attributes: ['filename', 'description'],
+          //   },
+
+          
+          // ],
         });
     
         const usersLb = dbLeaderboardData.map((user) =>
           user.get({ plain: true })
         );
+        // look through each user 
+        
+
     
+        console.log('==============USER LB===========', usersLb); 
         res.render('leaderboard', {
             usersLb,
         });
@@ -142,5 +157,41 @@ router.get('/leaderboard', async (req, res) => {
 
 }); 
 
+
+// router.get('/leaderboard', async (req, res) => {
+//   try {
+//       const dbLeaderboardData = await Score.findAll({
+//         include: User,
+//         order: [
+//           // We start the order array with the model we want to sort
+//           [Score, 'weekly_score', 'DESC']
+//         ]
+        
+//         // [
+//         //   {
+//         //     model: Score
+//         //   //   attributes: ['filename', 'description'],
+//         //   },
+
+        
+//         // ],
+//       });
+  
+
+//       const scores = dbLeaderboardData.map((score) => 
+//          scores.get({ plain: true })
+//       ); 
+//       console.log("===============SCORE LB===============", scores); 
+  
+//       // console.log('==============USER LB===========', usersLb); 
+//       res.render('leaderboard', {
+//           scores,
+//       });
+//     } catch (err) {
+//       console.log(err);
+//       res.status(500).json(err);
+//     }
+
+// }); 
   module.exports = router;
 

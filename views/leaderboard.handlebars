@@ -1,14 +1,87 @@
-<nav class="navbar">
+{{!-- <nav class="navbar">
     <a href={{profileUrl user.id}}>Profile</a>
     <a href='/friends'{{friendsUrl user.id}}>Friends</a>
     <a href='/leaderboard'>Leaderboard</a>
-</nav>
+</nav> --}}
 
-<h1>Leaderboard</h1>
+
+<div style= "background-color: black; no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;">
+    
+{{!-- <div style= "background-color: black;">  --}}
+    
+ 
+{{!-- <h1 id="Title-2">Leaderboard</h1>
 {{#each leaders as |user| }}
     <div>
         <span>{{user.name}}</span>
         <span>{{user.score}}</span>
     </div>
-{{/each}}
+{{/each}} --}}
+
+{{!-- </div> --}}
+
+<h1 id="Title-2">Leaderboard</h1>
+<tbody id='section'>
+  <table>
+    <thead>
+          <tr>
+              <th>Name</th>
+              <th>Score</th>
+              {{!-- <th>Item Price</th> --}}
+          </tr>
+    </thead>
+    
+    {{!-- <div id='display-scores' style="display: none"> --}}
+    <div id='display-scores'></div>
+    {{#each usersLb as |user| }}
+            <tr>
+                <td><span>{{user.full_name}}</span></td>
+                <td><span>{{user.scores}}</span></td>
+            </tr>
+    {{/each}}
+    </div>
+    <div id='display-scores-list'>
+
+  <p>{{printUser usersLb}}</p>
+    </div>
+   </table>
+ </tbody>
+
+
+
+
+
+<table>
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Score</th>
+              <th>Item Price</th>
+          </tr>
+        </thead>
+
+        <tbody id='section'>
+          <tr>
+            <td>Groot</td>
+            <td>20</td>
+            <td>$0.87</td>
+          </tr>
+          <tr>
+            <td>Alan</td>
+            <td>Jellybean</td>
+            <td>$3.76</td>
+          </tr>
+          <tr>
+            <td>Jonathan</td>
+            <td>Lollipop</td>
+            <td>$7.00</td>
+          </tr>
+        </tbody>
+</table>
+{{!-- background color black --}}
+</div>
 
