@@ -19,15 +19,39 @@
 /* Title */
 #Title {
   /* font-family: 'Permanent Marker', cursive; */
-  font-family: "Kanit", sans-serif;
+  font-family: "Stardos Stencil", sans-serif;
 
   color: white;
-  padding-left: 2vw;
+  padding-left: 4vw;
 }
+
+.background {
+  min-height: 100%;
+  min-width: 1024px;
+
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.nav-wrapper {
+  background-color: rgb(196, 39, 39);
+}
+
+#icon {
+  font-size: 60px;
+  margin-left: 10px;
+}
+
 /* login labels */
 #login {
   color: white;
-  padding-left: 2vw;
+  padding-left: 1vw;
   font-size: large;
 }
 
@@ -62,10 +86,12 @@
 
 #welcome {
   color: white;
+  font-family: "Stardos Stencil", sans-serif;
 }
 
 #current-score {
   color: white;
+  font-family: "Stardos Stencil", sans-serif;
 }
 
 #new-workout-button {
