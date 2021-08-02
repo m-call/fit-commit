@@ -48,4 +48,8 @@ Workout.belongsToMany(Exercise, {
   as: 'workout_exercise',
 });
 
+
+
+
+
 module.exports = { Exercise, Score, User, WorkoutExercise, Workout };

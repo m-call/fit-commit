@@ -14,14 +14,6 @@
     <button class="btn btn-primary" type="submit" id="new-workout-button" style="background-color:rgb(196, 39, 39);">Add Workout</button>
 </div>
 
-{{!-- {{#each workouts as |workout| }}
-    <div>{{workout.date}}</div>
-    <div>{{workout.points}}</div>
-    {{#each exercises as |exercise| }}
-        <div>{{exercise.name}}</div>
-        <div>{{exercise.points}}</div>
-    {{/each}}
-{{/each}} --}}
 
 <p id='friends'>Friends</p>
 <div id='display-friends' style="display: none">
@@ -33,9 +25,26 @@
 
 </div>
 
-<p>{{printUser user}}</p>
-<div id="workout-history"></div>
+{{!-- {{printHistory workoutHistory}} --}}
+<div id="workout-history" style="color: antiquewhite;">
+    {{#each workoutHistory as |workout|}}
+        {{#if workout.date}}
+            <h5>{{workout.date}}</h5>
+            <br>
+        {{else}}
+            {{#each this as |exercise|}}
+                <div class="entry" style="color: antiquewhite;">
+                    <h6>{{nameExercise exercise.id}}</h6>
+                    <div>Weight: {{exercise.weight}} lbs</div>
+                    <div>Sets: {{exercise.sets}}</div>
+                    <div>Reps: {{exercise.repetitions}}</div>
+                    <br>
+                    <br>
+                </div>
+            {{/each}}
+        {{/if}}
+        </div>
+    {{/each}}
+</div>
 
 <script src="./js/profile.js"></script>
-
-
