@@ -1,3 +1,4 @@
+// Populate the leader list 
 const populateLeaderList = async () => {
     // console.log('tesdfasdf');
     const scoreList = document.querySelector('#display-scores');

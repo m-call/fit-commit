@@ -4,7 +4,8 @@ const populateFriendList = async () => {
   const friendLinks = document.querySelector('#display-friends-list');
   const friends = friendList.children;
   let numFriends = friends.length;
-  // console.log(typeof friends[1].innerHTML);
+  
+  // iterate through all user friends and display 
   for(var i=0; i<numFriends; i++){
     fetch(`/api/users/${friends[i].innerHTML}`).then((response) => {
       // return response.text()
@@ -27,20 +28,15 @@ const populateFriendList = async () => {
   }
 }
 
-// const displayWorkoutHistory = async(event) => 
-// {
-
-// }
-
+// TODO: ADDS workout to db. NEED TO FIX 
+// Comment: Who worked on this? 
 const newWorkoutHandler = async (event) => {
   event.preventDefault();
-
-  // const name = document.querySelector('#name-signup').value.trim();
-  // const email = document.querySelector('#email-signup').value.trim();
   const username = document.querySelector('#username-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
 
-  // if (name && username && password) {
+  // if username and password is inputted by the user then fetch the route and 
+  // execute post 
     if (username && password) {
     console.log('username: ', username); 
     console.log('pass:', password); 
@@ -60,11 +56,10 @@ const newWorkoutHandler = async (event) => {
   }
 };
 
-    
 document
   .querySelector('#new-workout-button')
   .addEventListener('submit', newWorkoutHandler);
-
+// display the user's friend list 
 populateFriendList();
 
 
