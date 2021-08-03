@@ -84,13 +84,11 @@
 #welcome {
   color: white;
   font-family: "Stardos Stencil", sans-serif;
-  margin-left: 20px;
 }
 
 #current-score {
   color: white;
   font-family: "Stardos Stencil", sans-serif;
-  margin-left: 20px;
 }
 
 #new-workout-button {
@@ -101,13 +99,11 @@
 #friends {
   color: white;
   font-family: "Stardos Stencil", sans-serif;
-  margin-left: 200px;
 }
 
 #display-friends-list {
   color: white;
   font-family: "Stardos Stencil", sans-serif;
-  margin-left: 200px;
 }
 
 #add-workout {
@@ -121,10 +117,6 @@
 
 #add-workout {
   margin-left: 75px;
-}
-
-#add-workout-type {
-  width: 10%;
 }
 
 #shift1,
