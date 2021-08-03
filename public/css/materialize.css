@@ -1,16 +1,13 @@
-#top-nav
-{
+#top-nav {
   /* do not display when user is logging in*/
   /* display: none; */
 }
 
-.section
-{
-  color:white; 
+.section {
+  color: white;
 }
 /* Sub-Titles for each page */
-#Title-2
-{
+#Title-2 {
   font-family: "Kanit", sans-serif;
   font-size: x-large;
   color: white;
@@ -95,15 +92,31 @@
 }
 
 #new-workout-button {
-  margin-left: 80px;
+  margin-left: 150px;
+  margin-top: 20px;
 }
 
 #friends {
   color: white;
+  font-family: "Stardos Stencil", sans-serif;
 }
 
 #display-friends-list {
   color: white;
+  font-family: "Stardos Stencil", sans-serif;
+}
+
+#add-workout {
+  font-family: "Stardos Stencil", sans-serif;
+  font-size: 20px;
+}
+
+#workout-select {
+  margin-left: 75px;
+}
+
+#add-workout {
+  margin-left: 75px;
 }
 
 #shift1,
@@ -3121,7 +3134,7 @@ table,
 th,
 td {
   border: none;
-  color:white;
+  color: white;
 }
 
 table {
