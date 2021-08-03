@@ -3,6 +3,15 @@
 {{!-- Nav-bar--}}
 <h2 id='welcome'>Welcome {{user.full_name}}</h2>
 <h3 id='current-score'>Current Score: {{getUserScore user}}</h3>
+
+
+{{!-- <div class="form-group">
+    <button class="btn btn-primary" type="submit" id="new-workout-button" style="background-color:rgb(196, 39, 39);">Add Workout</button>
+</div>
+
+<div id="submit-form"></div> --}}
+
+
 <p id='friends'>Friends</p>
 <div id='display-friends' style="display: none">
     {{#each user.friend_id as |friend|}}
