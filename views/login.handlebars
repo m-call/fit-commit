@@ -5,10 +5,12 @@
 
     <form class="form login-form">
       <div class="form-group">
+        <i class="material-icons" style="color: white;">account_circle</i>
         <label id="login" for="username-login">Username:</label>
         <input style="color: white"class="form-input" type="text" id="username-login" />
       </div>
       <div class="form-group">
+        <i class="material-icons" style="color: white;">lock</i>
         <label id="login"for="password-login">Password:</label>
         <input style="color: white"class="form-input" type="password" id="password-login" />
       </div>
@@ -22,14 +24,24 @@
 
     <form class="form signup-form">
       <div class="form-group">
+        <i class="material-icons" style="color: white;">account_circle</i>
         <label id="login"for="username-signup">Username:</label>
         <input style="color: white"class="form-input" type="text" id="username-signup" />
       </div>
       <div class="form-group">
+        <i class="material-icons" style="color: white;">lock</i>
         <label id="login"for="password-signup">Password:</label>
         <input style="color: white"class="form-input" type="password" id="password-signup" />
       </div>
-      <div class="form-group">
+      
+      {{!-- <div class="input-field col s12">
+        <select class="browser-default">
+          <option value="" disabled selected>Choose your fitness trainer</option>
+          <option value="1" id="trainer1">1</option>
+          <option value="2" id="trainer2">Gamora</option>
+          <option value="3" id="trainer3">Rocket Raccoon</option>
+        </select>
+    </div> --}}
         <button class="btn btn-primary" type="submit" id="signup-button" style="background-color:rgb(196, 39, 39);">signup</button>
       </div>
     </form>
