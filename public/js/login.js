@@ -39,6 +39,10 @@ const loginFormHandler = async (event) => {
     // const email = document.querySelector('#email-signup').value.trim();
     const username = document.querySelector('#username-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
+    // trainers 
+    // const trainer1 = document.querySelector('#trainer1').value.trim();
+    // const trainer2 = document.querySelector('#trainer2').value.trim();
+    // const trainer3 = document.querySelector('#trainer3').value.trim();
   
     // if (name && username && password) {
       if (username && password) {
@@ -46,7 +50,8 @@ const loginFormHandler = async (event) => {
       console.log('pass:', password); 
       const response = await fetch('/api/users/signup', {
         method: 'POST',
-        body: JSON.stringify({ username: username, password: password }),
+        // body: JSON.stringify({ username: username, password: password, friend_id:trainer1}),
+        body: JSON.stringify({ username: username, password: password}),
         headers: { 'Content-Type': 'application/json' },
       });
   

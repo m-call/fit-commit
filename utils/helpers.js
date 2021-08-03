@@ -50,4 +50,15 @@ module.exports = {
         // console.log(typeof id);
         return table[id-1];
     },
-  };
+    getUserScore: (user) => {
+        if(user.scores.length != 0){
+            let lastIndex = user.scores.length-1;
+            return user.scores[lastIndex].weekly_score;
+        }
+        else 
+        {
+            return 0;
+        }
+    }
+
+}
