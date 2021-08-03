@@ -34,6 +34,23 @@ module.exports = {
         return friend;
     },
     getUserScore: (user) => {
+        let lastIndex = user.scores.length-1;
+        return user.scores[lastIndex].weekly_score;
+    },
+    printHistory: (history) => {
+        console.log('history', history);
+    },
+    printType: (entry) => {
+        console.log('type', typeof entry);
+    },
+    nameExercise: (id) => {
+        const table = ['Jump squats','Burpees','AMRAPs','Frog sit-ups',];
+        // let key = id.toString();
+        // let key = '1';
+        // console.log(typeof id);
+        return table[id-1];
+    },
+    getUserScore: (user) => {
         if(user.scores.length != 0){
             let lastIndex = user.scores.length-1;
             return user.scores[lastIndex].weekly_score;
@@ -43,4 +60,5 @@ module.exports = {
             return 0;
         }
     }
-  };
+
+}
