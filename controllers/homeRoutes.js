@@ -2,10 +2,11 @@ const router = require('express').Router();
 const { User, Workout, Score } = require('../models');
 const withAuth = require('../utils/auth');
 
+// news:: displays the news 
 router.get('/news', async (req, res) => {
     res.render('news'); 
 }); 
-// router.get('/profile', async (req, res) => {
+// profile:: renders profile, router.get('/profile', async (req, res) => {
 router.get('/profile', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
@@ -32,94 +33,15 @@ router.get('/profile', async (req, res) => {
   }
 });
 
-// router.get('/project/:id', async (req, res) => {
-//   try {
-//     const projectData = await Project.findByPk(req.params.id, {
-//       include: [
-//         {
-//           model: User,
-//           attributes: ['name'],
-//         },
-//       ],
-//     });
-
-//     const project = projectData.get({ plain: true });
-
-//     res.render('project', {
-//       ...project,
-//       logged_in: req.session.logged_in
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
-// // Use withAuth middleware to prevent access to route
-// router.get('/profile', withAuth, async (req, res) => {
-//   try {
-//     // Find the logged in user based on the session ID
-//     const userData = await User.findByPk(req.session.user_id, {
-//       attributes: { exclude: ['password'] },
-//       include: [{ model: Project }],
-//     });
-
-//     const user = userData.get({ plain: true });
-
-//     res.render('profile', {
-//       ...user,
-//       logged_in: true
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
-// router.get('/login', (req, res) => {
-//   // If the user is already logged in, redirect the request to another route
-//   if (req.session.logged_in) {
-//     res.redirect('/profile');
-//     return;
-//   }
-
-//   res.render('login');
-// });
-
 module.exports = router;
 
-//homeRoutes
+
 // Login:: render the login.handlebars page on homeroute page 
 router.get('/',  (req, res) => {
     res.render('login'); 
 }); 
 
-
-
-// User's personal dashboard. Renders the addWorkout.handlebar 
-// router.get('/profile/:id', withAuth, async (req, res) => {
-//     try {
-//       // Find the logged in user based on the session ID
-//       const userData = await User.findByPk(req.session.user_id, {
-//         attributes: { exclude: ['password'] },
-//         include: [{ model: Workout, Score}],
-//       });
-  
-//       const user = userData.get({ plain: true });
-//       console.log('================================'); 
-//       console.log('USER: ', user); 
-//     //   console.log(user); 
-//       // profile.handlebars
-//       res.render('profile', {
-//         ...user,
-//         logged_in: true
-//       });
-//     } catch (err) {
-//       console.log('IN DASHBOARD ERROR'); 
-//       res.status(500).json(err);
-      
-//     }
-//   });
-
-
+// Leaderboard:: render the leaderboard handlebars and pass usernames and scores
 router.get('/leaderboard', async (req, res) => {
     try {
         const dbLeaderboardData = await User.findAll({
@@ -129,14 +51,6 @@ router.get('/leaderboard', async (req, res) => {
             [Score, 'weekly_score', 'DESC']
           ]
           
-          // [
-          //   {
-          //     model: Score
-          //   //   attributes: ['filename', 'description'],
-          //   },
-
-          
-          // ],
         });
     
         const usersLb = dbLeaderboardData.map((user) =>
@@ -145,7 +59,15 @@ router.get('/leaderboard', async (req, res) => {
         // look through each user 
         
 
-    
+        // for(var i = 0; i < usersLb.length; i++)
+        // {
+        //   // last item on the list 
+        //     let j = usersLb.scores.length - 1; 
+        //     // select the last item in the user lb
+        //     usersLb.scores = usersLb.scores[j].get({ plain: true }); 
+
+        // }
+
         console.log('==============USER LB===========', usersLb); 
         res.render('leaderboard', {
             usersLb,
@@ -157,41 +79,5 @@ router.get('/leaderboard', async (req, res) => {
 
 }); 
 
-
-// router.get('/leaderboard', async (req, res) => {
-//   try {
-//       const dbLeaderboardData = await Score.findAll({
-//         include: User,
-//         order: [
-//           // We start the order array with the model we want to sort
-//           [Score, 'weekly_score', 'DESC']
-//         ]
-        
-//         // [
-//         //   {
-//         //     model: Score
-//         //   //   attributes: ['filename', 'description'],
-//         //   },
-
-        
-//         // ],
-//       });
-  
-
-//       const scores = dbLeaderboardData.map((score) => 
-//          scores.get({ plain: true })
-//       ); 
-//       console.log("===============SCORE LB===============", scores); 
-  
-//       // console.log('==============USER LB===========', usersLb); 
-//       res.render('leaderboard', {
-//           scores,
-//       });
-//     } catch (err) {
-//       console.log(err);
-//       res.status(500).json(err);
-//     }
-
-// }); 
   module.exports = router;
 
