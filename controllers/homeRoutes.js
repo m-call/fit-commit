@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Workout, Score } = require('../models');
+const { User, Workout, Score, WorkoutExercise, Exercise } = require('../models');
 const withAuth = require('../utils/auth');
 
 // news:: displays the news 
@@ -17,17 +17,61 @@ router.get('/profile', async (req, res) => {
         // where: { id: 1 },
         include: Score, Workout,
     });
-    
+
+    const workoutData = await Workout.findAll({
+        where: { user_id: req.session.user_id },
+        // include: Score, Workout,
+    });
+    console.log('workout data', typeof workoutData);
 
     // // Serialize data so the template can read it
     // const projects = projectData.map((project) => project.get({ plain: true }));
     const user = userData.get({ plain: true });
 
-    // Pass serialized data and session flag into template
-    res.render('profile', { 
-      user, 
-      logged_in: req.session.logged_in 
-    });
+    // const workouts = workoutData.get({ plain: true });
+    const workouts = workoutData.map((workout) => workout.get({ plain: true }));
+    console.log('workouts', workouts);
+
+    const workoutHistory = [];
+    const workoutDates = [];
+
+    for(let i=0; i<workouts.length+1; i++){
+        if(i<workouts.length){
+            const exerciseData = await WorkoutExercise.findAll({
+                where: { workout_id: workouts[i].id },
+                // include: Exercise
+            });
+            const exercises = exerciseData.map((exercise) => exercise.get({ plain: true }));
+            console.log('exercises', exercises);
+            // workoutHistory.push(workouts[i].date);
+            // exercises.unshift(workouts[i].date);
+            workoutHistory.push({date: workouts[i].date});
+            workoutHistory.push(exercises);
+            // workoutDates.push({date: workouts[i].date});
+            
+            console.log('workoutHistoryinprogress', workoutHistory)
+        }
+        else{
+            console.log('workoutHistory', workoutHistory);
+            console.log('workoutDates', workoutDates);
+            // Pass serialized data and session flag into template
+            res.render('profile', { 
+                user,
+                workoutHistory,
+                logged_in: req.session.logged_in 
+            });
+        }
+    }
+
+
+
+    // console.log('workoutHistory', workoutHistory)
+    // // Pass serialized data and session flag into template
+    // res.render('profile', { 
+    //   user,
+    // //   workoutHistory,
+    //   logged_in: req.session.logged_in 
+    // });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -58,6 +102,19 @@ router.get('/leaderboard', async (req, res) => {
         );
         // look through each user 
         
+        for(let i=0; i<usersLb.length; i++){
+            
+            const scores = usersLb[i].scores;
+            const len = scores.length;
+            if(len > 0){
+                console.log('week score ******', scores);
+            }
+            
+            
+   
+            
+            ;
+        }
 
         // for(var i = 0; i < usersLb.length; i++)
         // {
