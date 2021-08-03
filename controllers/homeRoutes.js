@@ -103,7 +103,6 @@ router.get('/leaderboard', async (req, res) => {
         // look through each user 
         
         for(let i=0; i<usersLb.length; i++){
-            
             const scores = usersLb[i].scores;
             const len = scores.length;
             if(len > 0){
