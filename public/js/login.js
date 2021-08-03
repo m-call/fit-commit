@@ -11,7 +11,9 @@ const loginFormHandler = async (event) => {
     const password = document.querySelector('#password-login').value.trim();
   
     if (username && password) {
-      // Send a POST request to the API endpoint 
+      // Send a POST request to the API endpoint
+      console.log('username: ', username); 
+      console.log('pass', password); 
       // const response = await fetch('/api/users/login', {
       const response = await fetch('/api/users/login', {
         method: 'POST',
@@ -21,6 +23,8 @@ const loginFormHandler = async (event) => {
   
       if (response.ok) {
         // If successful, redirect the browser to the profile page
+        console.log('============================'); 
+        console.log('successful login!'); 
         document.location.replace('/profile');
       } else {
         alert(response.statusText);
@@ -42,6 +46,8 @@ const loginFormHandler = async (event) => {
   
     // if (name && username && password) {
       if (username && password) {
+      console.log('username: ', username); 
+      console.log('pass:', password); 
       const response = await fetch('/api/users/signup', {
         method: 'POST',
         // body: JSON.stringify({ username: username, password: password, friend_id:trainer1}),
@@ -52,8 +58,10 @@ const loginFormHandler = async (event) => {
       if (response.ok) {
         document.location.replace('/profile');
         // document.location.replace(`/profile'/`); 
+        console.log('everything is all good'); 
       } else {
         alert(response.statusText);
+        console.log('THIS IS AN ERROR'); 
       }
     }
   };
