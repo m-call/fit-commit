@@ -4482,6 +4482,7 @@ nav i.material-icons {
 nav .nav-wrapper {
   position: relative;
   height: 100%;
+  background-color: rgb(199, 56, 56);
 }
 
 @media only screen and (min-width: 993px) {
