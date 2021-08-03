@@ -1,3 +1,4 @@
+// addWorkout:: 
 let exercise = null;
 const areAllNumbers = (numArray) => {
     allNums = true;
