@@ -4,7 +4,6 @@ const { Score, User } = require('../../models');
 // POST: create new score 
 router.post('/', async (req, res) => {
     try {
-        console.log(req.body)
       const newScore = await Score.create({
         ...req.body,
         user_id: req.session.user_id,
@@ -57,7 +56,6 @@ router.get('/:id', async(req, res) => {
 // PUT: update score 
 router.put('/:id', async(req, res) => {
     // update a category by its `id` value
-    console.log("Update route",req.params.id,req.body)
     try{
       const scoreData = await Score.update(req.body,{
         where: {
