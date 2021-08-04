@@ -45,12 +45,7 @@ User.init(
       allowNull: true,
       defaultValue:1,
       get: function () {
-        // if(friend_id != null){
           return JSON.parse(this.getDataValue('friend_id'));
-        
-        // else{
-          //  return JSON.stringify(this.getDataValue('friend_id'));
-        // }
       },
       set: function (val) {
         return this.setDataValue('friend_id', JSON.stringify(val));

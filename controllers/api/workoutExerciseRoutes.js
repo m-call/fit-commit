@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { WorkoutExercise } = require('../../models');
 
+// create a workout 
 router.post('/', async (req, res) => {
     try {
         const workoutExerciseData = await WorkoutExercise.create({
@@ -11,5 +12,7 @@ router.post('/', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+
 
 module.exports = router;

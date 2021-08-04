@@ -75,24 +75,12 @@ router.get('/profile', async (req, res) => {
             });
         }
     }
-
-
-
-    // console.log('workoutHistory', workoutHistory)
-    // // Pass serialized data and session flag into template
-    // res.render('profile', { 
-    //   user,
-    // //   workoutHistory,
-    //   logged_in: req.session.logged_in 
-    // });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 module.exports = router;
-
-
 // Login:: render the login.handlebars page on homeroute page 
 router.get('/',  (req, res) => {
     res.render('login'); 
@@ -104,7 +92,7 @@ router.get('/leaderboard', async (req, res) => {
         const dbLeaderboardData = await User.findAll({
           include: Score,
           order: [
-            // We start the order array with the model we want to sort
+            // We to start the order of the array in descending order 
             [Score, 'weekly_score', 'DESC']
           ]
           
@@ -113,30 +101,14 @@ router.get('/leaderboard', async (req, res) => {
         const usersLb = dbLeaderboardData.map((user) =>
           user.get({ plain: true })
         );
-        // look through each user 
-        
+        // iterate through each user in the db and check if we have access to the Score properties
         for(let i=0; i<usersLb.length; i++){
             const scores = usersLb[i].scores;
             const len = scores.length;
             if(len > 0){
                 console.log('week score ******', scores);
             }
-            
-            
-   
-            
-            ;
         }
-
-        // for(var i = 0; i < usersLb.length; i++)
-        // {
-        //   // last item on the list 
-        //     let j = usersLb.scores.length - 1; 
-        //     // select the last item in the user lb
-        //     usersLb.scores = usersLb.scores[j].get({ plain: true }); 
-
-        // }
-
         console.log('==============USER LB===========', usersLb); 
         res.render('leaderboard', {
             usersLb,
@@ -145,7 +117,6 @@ router.get('/leaderboard', async (req, res) => {
         console.log(err);
         res.status(500).json(err);
       }
-
 }); 
 
   module.exports = router;

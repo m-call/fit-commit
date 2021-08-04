@@ -59,6 +59,7 @@ const newWorkoutHandler = async (event) => {
 document
   .querySelector('#new-workout-button')
   .addEventListener('submit', newWorkoutHandler);
+
 // display the user's friend list 
 populateFriendList();
 
