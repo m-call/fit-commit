@@ -45,6 +45,12 @@
   margin-left: 10px;
 }
 
+/* add workout */
+#add-rep, #add-sets, #add-weight
+{
+  width: 10%;
+
+}
 /* login labels */
 #login {
   color: white;
