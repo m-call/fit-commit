@@ -6,6 +6,19 @@ const withAuth = require('../utils/auth');
 router.get('/news', async (req, res) => {
     res.render('news'); 
 }); 
+
+//login:: redirects user to login page 
+router.get('/logout', (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+  // TODO logout res.redirect to home page 
+  res.redirect('/'); 
+});
 // profile:: renders profile, router.get('/profile', async (req, res) => {
 router.get('/profile', async (req, res) => {
   try {
