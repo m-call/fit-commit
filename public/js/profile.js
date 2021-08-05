@@ -1,3 +1,4 @@
+console.log("profile.js")
 const populateFriendList = async () => {
   // console.log('tesdfasdf');
   const friendList = document.querySelector('#display-friends');
@@ -12,7 +13,7 @@ const populateFriendList = async () => {
       // console.log(response.json());
       return response.json();
     }).then((res) => {
-      console.log(res);
+      //console.log(res);
       let friend = document.createElement("p");  
       friend.innerHTML = `${res.full_name}`;
       
@@ -31,33 +32,50 @@ const populateFriendList = async () => {
 // TODO: ADDS workout to db. NEED TO FIX 
 // Comment: Who worked on this? 
 const newWorkoutHandler = async (event) => {
+  console.log('====on-submit-form======'); 
   event.preventDefault();
-  const username = document.querySelector('#username-signup').value.trim();
-  const password = document.querySelector('#password-signup').value.trim();
-
-  // if username and password is inputted by the user then fetch the route and 
-  // execute post 
-    if (username && password) {
-    console.log('username: ', username); 
-    console.log('pass:', password); 
-    const response = await fetch('/api/users/signup', {
+   // get user input from add workout form 
+   const reps = document.querySelector('#add-rep').value.trim();
+   const sets = document.querySelector('#add-sets').value.trim();
+   const weight = document.querySelector('#add-weight').value.trim();
+   const exercise = document.querySelector('#select-workout').value; 
+  console.log('reps: ', reps); 
+  console.log('sets: ', sets); 
+  console.log('weight: ', weight); 
+  console.log('exercise: ', exercise);
+  //  if (weight && sets && reps && exercise) 
+  if (weight && sets && reps && exercise) 
+   {
+     let newWorkout = {
+      "repetitions": reps, 
+      "sets": sets, 
+      "weight": weight, 
+      "time": 20, 
+      "workout_id": 2, 
+      "exercise_id": 2
+     }
+     const response = await fetch('/api/workouts', {
       method: 'POST',
-      body: JSON.stringify({ username: username, password: password }),
+      // body: JSON.stringify({ username: username, password: password, friend_id:trainer1}),
+      body: JSON.stringify(newWorkout),
       headers: { 'Content-Type': 'application/json' },
     });
-
+     
+    
     if (response.ok) {
-      document.location.replace('/profile');
-      console.log('everything is all good'); 
+      //document.location.replace('/profile');
+      // document.location.replace(`/profile'/`); 
+      console.log('everything is all good',response); 
     } else {
       alert(response.statusText);
       console.log('THIS IS AN ERROR'); 
     }
-  }
+   }
+
 };
 
 document
-  .querySelector('#new-workout-button')
+  .querySelector('#form-submit')
   .addEventListener('submit', newWorkoutHandler);
 
 // display the user's friend list 
