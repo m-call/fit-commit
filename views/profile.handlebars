@@ -12,7 +12,7 @@
 <div id="submit-form"></div> --}}
 
 
-<p id='friends'>Friends</p>
+<p id='friends'>Friends:</p>
 <div id='display-friends' style="display: none">
     {{#each user.friend_id as |friend|}}
         <div>{{showFriend friend}}</div>
@@ -55,13 +55,17 @@
     {{!-- </div> --}}
 </form>
 
-
+{{!-- SPACE FOR CHART.JS INSIDE OF THE CARD BELOW --}}
+<canvas></canvas>
 {{!-- Workout History --}}
-<div id="workout-history" style="color: antiquewhite;">
+<div id="workout-history" style="color: antiquewhite;"></div>
     {{#each workoutHistory as |workout|}}
-        {{#if workout.date}}
-            <h5>{{workout.date}}</h5>
-            <br>
+      {{#if workout.date}}
+  <div class="row">
+    <div class="col s12 m6" id="workout-history-cards">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">{{workout.date}}</span>
         {{else}}
             {{#each this as |exercise|}}
                 <div class="entry" style="color: antiquewhite;">
@@ -73,9 +77,35 @@
                     <br>
                 </div>
             {{/each}}
+      {{/if}}
+        </div>
+    {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{{!-- Workout History
+<div id="workout-history" style="color: antiquewhite;">
+    {{#each workoutHistory as |workout|}}
+        {{#if workout.date}}
+            <h5 style="color: antiquewhite;">{{workout.date}}</h5>
+            <br>
+        {{else}}
+            {{#each this as |exercise|}}
+                <div class="entry" style="color: antiquewhite;">
+                    <h6 style="color: antiquewhite;">{{nameExercise exercise.id}}</h6>
+                    <div>Weight: {{exercise.weight}} lbs</div>
+                    <div>Sets: {{exercise.sets}}</div>
+                    <div>Reps: {{exercise.repetitions}}</div>
+                    <br>
+                    <br>
+                </div>
+            {{/each}}
         {{/if}}
         </div>
     {{/each}}
-</div>
+</div> --}}
 {{!-- Reference script profile.js --}}
 <script src="./js/profile.js"></script>
