@@ -35,8 +35,9 @@ const newWorkoutHandler = async (event) =>
 {
    // new workout obj
    let newWorkout = {
-    "date": new Date()
+    "date": new Date().toLocaleString("en-US")
    }
+   console.log('NEW WORKOUT DATE', newWorkout.date.toLocaleString("en-US"));  
    const response = await fetch('/api/workout', {
     method: 'POST',
     body: JSON.stringify(newWorkout),
@@ -65,6 +66,7 @@ const newWorkoutExerciseHandler = async (event) => {
   console.log('exercise: ', exercise);
 
   //  if (weight && sets && reps && exercise) 
+  console.log('EXERCISE ID: ', parseInt(exercise)); 
   if (weight && sets && reps && exercise) 
    {
      let newWorkoutExercise = {
