@@ -63,7 +63,7 @@ const newWorkoutHandler = async (event) => {
      
     
     if (response.ok) {
-      //document.location.replace('/profile');
+      document.location.replace('/profile');
       // document.location.replace(`/profile'/`); 
       console.log('everything is all good',response); 
     } else {
