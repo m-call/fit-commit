@@ -36,7 +36,9 @@
           <li><a href={{profileUrl user.id}}>Profile</a></li>
           <li><a href={{friendsUrl user.id}}>Friends</a></li>
           <li><a href='/leaderboard'>Leaderboard</a></li>
+           {{#if logged_in}}
           <li><a href='/logout'>Logout</a></li>
+          {{/if}}
           {{!-- {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}} --}}
