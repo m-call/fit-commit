@@ -14,7 +14,9 @@ router.get('/', async (req, res) => {
 // Get one workout
 router.get('/:id', async (req, res) => {
   try {
-    const workoutData = await Workout.findByPk(req.params.id, {
+    const workoutData = await Workout.findAll({
+      // ensures that user_id is passed in 
+      where: { user_id: req.params.id },
       include: [
         { model: Exercise, through: WorkoutExercise, as: 'workout_exercise' },
       ],
@@ -38,8 +40,13 @@ router.post('/', async (req, res) => {
       ...req.body,
       user_id: req.session.user_id,
     });
+   
+    const workout = newWorkout.get({
+      plain: true
+    })
 
-    res.status(200).json(newWorkout);
+    // res.status(200).json(newWorkout);
+    res.status(200).json(workout);
   } catch (err) {
     res.status(400).json(err);
   }
