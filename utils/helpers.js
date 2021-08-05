@@ -30,7 +30,7 @@ module.exports = {
         console.log('type', typeof entry);
     },
     nameExercise: (id) => {
-        const table = ['Jump squats','Burpees','AMRAPs','Frog sit-ups',];
+        const table = ['Bicep Curls','Tricep Extensions','Bench Press','Dead Lift',];
         // let key = id.toString();
         // let key = '1';
         // console.log(typeof id);

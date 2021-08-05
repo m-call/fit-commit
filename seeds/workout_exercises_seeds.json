@@ -2,7 +2,7 @@
   {
     "repetitions": 5,
     "sets": 5,
-    "weight": 110,
+    "weight": 25,
     "time": 10,
     "workout_id": 1,
     "exercise_id": 2
@@ -10,7 +10,7 @@
   {
     "repetitions": 10,
     "sets": 3,
-    "weight": 120,
+    "weight": 50,
     "time": 8,
     "workout_id": 1,
     "exercise_id": 3
@@ -18,7 +18,7 @@
   {
     "repetitions": 12,
     "sets": 3,
-    "weight": 130,
+    "weight": 160,
     "time": 10,
     "workout_id": 4,
     "exercise_id": 1
@@ -26,7 +26,7 @@
   {
     "repetitions": 4,
     "sets": 4,
-    "weight": 140,
+    "weight": 200,
     "time": 20,
     "workout_id": 3,
     "exercise_id": 2
