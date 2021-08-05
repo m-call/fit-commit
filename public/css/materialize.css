@@ -1,3 +1,8 @@
+html {
+  overflow-y: auto;
+  height: 5000px;
+}
+
 #top-nav {
   /* do not display when user is logging in*/
   /* display: none; */
