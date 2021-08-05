@@ -30,10 +30,10 @@
     <div class="input-field white col s12" id="workout-select" style="width: 350px;">
     <select id="select-workout">
         <option value="" disabled selected>Choose your workout</option>
-        <option value="1">Burpees</option>
-        <option value="2">AMRAPS</option>
-        <option value="3">Jump squats</option>
-        <option value="4">Frog sit-ups</option>
+        <option value="1">Bicep Curls</option>
+        <option value="2">Tricep Extensions</option>
+        <option value="3">Bench Press</option>
+        <option value="4">Dead Lift</option>
     </select>
     <label>Workout Select</label>
     </div>
@@ -64,6 +64,7 @@
 {{!-- Workout History --}}
 <div id="workout-history" style="color: antiquewhite;"></div>
     {{#each workoutHistory as |workout|}}
+
       {{#if workout.date}}
   <div class="row">
     <div class="col s12 m6" id="workout-history-cards">
@@ -73,7 +74,8 @@
         {{else}}
             {{#each this as |exercise|}}
                 <div class="entry" style="color: antiquewhite;">
-                    <h6>{{nameExercise exercise.id}}</h6>
+                    <h6>{{nameExercise exercise.exercise_id}}</h6>
+                    {{!-- <h6>{{nameExercise id}}</h6> --}}
                     <div>Weight: {{exercise.weight}} lbs</div>
                     <div>Sets: {{exercise.sets}}</div>
                     <div>Reps: {{exercise.repetitions}}</div>
