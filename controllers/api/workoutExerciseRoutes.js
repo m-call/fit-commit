@@ -3,6 +3,7 @@ const { WorkoutExercise } = require('../../models');
 
 // create a workout 
 router.post('/', async (req, res) => {
+    console.log(req.body); 
     try {
         const workoutExerciseData = await WorkoutExercise.create({
             ...req.body,

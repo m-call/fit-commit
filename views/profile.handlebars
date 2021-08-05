@@ -24,7 +24,7 @@
   <div class="col-md-6" id="shift2">
     <h2 id="Title">Add a workout!</h2>
     <div class="input-field white col s12" id="workout-select" style="width: 350px;">
-    <select>
+    <select id="select-workout">
         <option value="" disabled selected>Choose your workout</option>
         <option value="1">Bicep Curls</option>
         <option value="2">Tricep Extensions</option>
@@ -34,7 +34,7 @@
     <label>Workout Select</label>
     </div>
     {{!-- Form information --}}
-    <form class="form signup-form">
+    <form class="form signup-form" id="form-submit">
       <div class="form-group">
         <label id="add-workout" for="repetitions">Repetitions:</label>
         {{!-- <input style="color: white"class="form-input" type="text" id="username-signup" /> --}}
@@ -49,10 +49,11 @@
         <label id="add-workout" for="workout-weight">Weight:</label>
         <input style="color: white"class="form-input" type="text" id="add-weight" />
       </div>
-
-<div class="form-group">
-    <button class="btn btn-primary" type="submit" id="new-workout-button" style="background-color:rgb(196, 39, 39);">Add Workout</button>
-</div>
+    
+    {{!-- <div class="form-group"> --}}
+        <button class="btn btn-primary" type="submit" id="new-workout-button" style="background-color:rgb(196, 39, 39);">Add Workout</button>
+    {{!-- </div> --}}
+</form>
 
 
 {{!-- Workout History --}}
