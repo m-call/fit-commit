@@ -8,8 +8,15 @@ router.post('/', async (req, res) => {
         const workoutExerciseData = await WorkoutExercise.create({
             ...req.body,
         });
+        req.session.save(() => {
+            req.session.user_id = userData.id;
+            req.session.logged_in = true;
+      
+            res.status(200).json(userData);
+          });
         res.status(200).json(workoutExerciseData);
     } catch (err) {
+        console.log(res); 
         res.status(500).json(err);
     }
 });

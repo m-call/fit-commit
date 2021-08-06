@@ -58,46 +58,76 @@ const newWorkoutExerciseHandler = async (event) => {
   console.log('====on-submit-form======'); 
   event.preventDefault();
    // get user input from add workout form 
-   const reps = document.querySelector('#add-rep').value.trim();
-   const sets = document.querySelector('#add-sets').value.trim();
-   const weight = document.querySelector('#add-weight').value.trim();
-   const exercise = document.querySelector('#select-workout').value; 
-  console.log('reps: ', reps); 
-  console.log('sets: ', sets); 
-  console.log('weight: ', weight); 
-  console.log('exercise: ', exercise);
+  const reps = document.querySelector('#add-rep').value.trim();
+  const sets = document.querySelector('#add-sets').value.trim();
+  const weight = document.querySelector('#add-weight').value.trim();
+  const exercise = document.querySelector('#select-workout').value;
+  // console.log('reps: ', reps);
+  // console.log('sets: ', sets);
+  // console.log('weight: ', weight);
+  // console.log('exercise: ', exercise);
 
-  //  if (weight && sets && reps && exercise) 
-  console.log('EXERCISE ID: ', parseInt(exercise)); 
-  if (weight && sets && reps && exercise) 
-   {
-     let newWorkoutExercise = {
-      "repetitions": reps, 
-      "sets": sets, 
-      "weight": weight, 
-      // "time": 20,
-       // TODO: HOW TO FIND WORKOUT EXERCISE_ID  
-      "workout_id": workout_id, 
-      "exercise_id": parseInt(exercise)
-     }
-     console.log('NEW WORKOUT', newWorkoutExercise); 
-     const response = await fetch('/api/workoutExercise', {
+  //  if (weight && sets && reps && exercise)
+  console.log('EXERCISE ID: ', parseInt(exercise));
+  if (weight && sets && reps && exercise && workout_id) {
+    let newWorkoutExercise = {
+      repetitions: reps,
+      sets: sets,
+      weight: weight,
+      // time: 20,
+      // TODO: HOW TO FIND WORKOUT EXERCISE_ID
+      workout_id: workout_id,
+      exercise_id: parseInt(exercise),
+    };
+    // console.log('NEW WORKOUT', newWorkoutExercise);
+    let response = await fetch('/api/workoutExercise', {
       method: 'POST',
       // body: JSON.stringify({ username: username, password: password, friend_id:trainer1}),
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newWorkoutExercise),
+    });
+
+    let scoreResponse = await fetch('/api/scores/', {
+      method: 'GET',
+    });
+
+    const thisScore = reps * sets;
+    // console.log(thisScore);
+
+    let resScore = await scoreResponse.json();
+    let runningTotal = 0;
+
+    if (resScore[resScore.length - 1].overall_score) {
+      // console.log('add');
+      runningTotal = resScore[resScore.length - 1].overall_score;
+      console.log(runningTotal);
+    } else {
+      runningTotal += 0;
+    }
+
+    let workoutScore = {
+      overall_score: parseInt(thisScore),
+      weekly_score: parseInt(runningTotal + thisScore),
+      monthly_score: parseInt(runningTotal + thisScore),
+    };
+
+    console.log(workoutScore);
+
+    let scoreUpdate = await fetch('/api/scores', {
+      method: 'POST',
+      body: JSON.stringify(workoutScore),
       headers: { 'Content-Type': 'application/json' },
     });
-     
-    
+
+    // console.log(await scoreUpdate.json());
+
     if (response.ok) {
       // document.location.replace('/profile');
-      // document.location.replace(`/profile'/`); 
-      console.log('everything is all good',response); 
     } else {
       alert(response.statusText);
-      console.log('THIS IS AN ERROR'); 
+      console.log('THIS IS AN ERROR');
     }
-   }
+  }
 
 };
 
