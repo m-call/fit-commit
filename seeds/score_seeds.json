@@ -7,10 +7,38 @@
     "user_id": 4
   },
   {
-    "overall_score": 2,
+    "overall_score": 1,
+    "weekly_score": 1,
+    "monthly_score": 1,
+    "week_id": 1,
+    "user_id": 1
+  },
+  {
+    "overall_score": 3,
     "weekly_score": 2,
-    "monthly_score": 2,
+    "monthly_score": 3,
     "week_id": 2,
+    "user_id": 1
+  },
+  {
+    "overall_score": 4,
+    "weekly_score": 1,
+    "monthly_score": 4,
+    "week_id": 3,
+    "user_id": 1
+  },
+  {
+    "overall_score": 7,
+    "weekly_score": 3,
+    "monthly_score": 7,
+    "week_id": 4,
+    "user_id": 1
+  },
+  {
+    "overall_score": 12,
+    "weekly_score": 5,
+    "monthly_score": 5,
+    "week_id": 5,
     "user_id": 1
   },
   {

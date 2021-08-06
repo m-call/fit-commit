@@ -8,7 +8,7 @@ const workoutRoutes = require('./workoutRoutes');
 router.use('/exercises', exerciseRoutes);
 router.use('/scores', scoreRoutes);
 router.use('/users', userRoutes, scoreRoutes);
-router.use('/workouts', workoutExerciseRoutes);
-router.use('/workouthistory', workoutRoutes);
+router.use('/workoutexercises', workoutExerciseRoutes);
+router.use('/workouts', workoutRoutes);
 
 module.exports = router;
