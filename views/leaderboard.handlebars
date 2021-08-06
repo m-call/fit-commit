@@ -14,9 +14,9 @@
           <tr>
               <th>Name</th>
               {{!-- <th>Score</th> --}}
-              <th>Weekly</th>
-              <th>Overall</th>
-              <th>Monthly</th> 
+              {{!-- <th>Weekly</th> --}}
+              <th>Score</th>
+              {{!-- <th>Monthly</th>  --}}
           </tr>
     </thead>
     
@@ -26,9 +26,9 @@
             <tr>
                 <td><span>{{user.full_name}}</span></td>
                 {{#each user.scores}}
-                 <td><span>{{this.weekly_score}}</span></td>
+                 {{!-- <td><span>{{this.weekly_score}}</span></td> --}}
                  <td><span>{{this.overall_score}}</span></td>
-                <td><span>{{this.monthly_score}}</span></td>
+                {{!-- <td><span>{{this.monthly_score}}</span></td> --}}
                 {{/each}}
             </tr>
     {{/each}}
