@@ -88,13 +88,13 @@ const newWorkoutExerciseHandler = async (event) => {
     let scoreResponse = await fetch('/api/scores/', {
       method: 'GET',
     });
-
+    console.log(scoreResponse)
     const thisScore = reps * sets;
     // console.log(thisScore);
 
     let resScore = await scoreResponse.json();
     let runningTotal = 0;
-
+    console.log('RESCORE: ', resScore); 
     if (resScore[resScore.length - 1].overall_score) {
       // console.log('add');
       runningTotal = resScore[resScore.length - 1].overall_score;
@@ -120,7 +120,7 @@ const newWorkoutExerciseHandler = async (event) => {
     // console.log(await scoreUpdate.json());
 
     if (response.ok) {
-      // document.location.replace('/profile');
+      document.location.reload(); 
     } else {
       alert(response.statusText);
       console.log('THIS IS AN ERROR');
@@ -143,13 +143,3 @@ document
 
 // display the user's friend list 
 populateFriendList();
-
-
-  
-
-
-
-
-
-
-
