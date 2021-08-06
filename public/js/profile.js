@@ -32,8 +32,9 @@ const populateFriendList = async () => {
 //workout_id 
 var workout_id; 
 const newWorkoutHandler = async (event) => 
-{
-  document.querySelector('#workout-selector-form').setAttribute("style","display: block;")
+{ 
+  
+  document.querySelector('#workout-selector-form').setAttribute("style","display: block;");
    // new workout obj
    let newWorkout = {
     "date": new Date().toLocaleString("en-US")
@@ -89,7 +90,7 @@ const newWorkoutExerciseHandler = async (event) => {
      
     
     if (response.ok) {
-      document.location.replace('/profile');
+      // document.location.replace('/profile');
       // document.location.replace(`/profile'/`); 
       console.log('everything is all good',response); 
     } else {
@@ -109,8 +110,13 @@ document
   .querySelector('#form-submit')
   .addEventListener('submit', newWorkoutExerciseHandler);
 
-
-  
+let addWorkoutIsShown = document.querySelector('#show-add-workout').innerHTML;
+if(addWorkoutIsShown === "true"){
+  document.querySelector('#workout-selector-form').setAttribute("style","display: block;");
+}
+// if(document.querySelector('#adding').innerHTML === ''){
+//   document.querySelector('#workout-selector-form').setAttribute("style","display: block;");
+// }
 
 // display the user's friend list 
 populateFriendList();
