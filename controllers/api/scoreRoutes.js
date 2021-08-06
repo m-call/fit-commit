@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Score, User } = require('../../models');
 
-// POST: create new score 
+// POST: create new score
 router.post('/', async (req, res) => {
   try {
     console.log(req.body);
@@ -47,25 +47,21 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-  
 
-// PUT: update score 
-router.put('/:id', async(req, res) => {
-    // update a category by its `id` value
-    console.log("Update route",req.params.id,req.body)
-    try{
-      const scoreData = await Score.update(req.body,{
-        where: {
-          id: req.params.id,
-        },
-      }); 
-      res.status(200).json(scoreData); 
-     }
-     catch(err)
-     {
-        res.status (500).json(err); 
-     }
-  
-  });
+// PUT: update score
+router.put('/:id', async (req, res) => {
+  // update a category by its `id` value
+  console.log('Update route', req.params.id, req.body);
+  try {
+    const scoreData = await Score.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json(scoreData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-  module.exports = router;
+module.exports = router;
