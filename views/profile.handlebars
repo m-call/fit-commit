@@ -60,7 +60,8 @@
 </form>
 
 {{!-- SPACE FOR CHART.JS INSIDE OF THE CARD BELOW --}}
-<canvas></canvas>
+<canvas id="scores" width="1000px" height="400px"></canvas>
+
 {{!-- Workout History --}}
 <div id="workout-history" style="color: antiquewhite;"></div>
     {{#each workoutHistory as |workout|}}
@@ -114,4 +115,6 @@
     {{/each}}
 </div> --}}
 {{!-- Reference script profile.js --}}
+
 <script src="./js/profile.js"></script>
+<script src="./js/charts.js"></script>
