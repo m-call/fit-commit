@@ -32,9 +32,10 @@ router.get('/profile', async (req, res) => {
     });
 
     const workoutData = await Workout.findAll({
-        // where: { user_id: req.session.user_id },
+        where: { user_id: req.session.user_id },
         // include: Score, Workout,
     });
+
     console.log('workout data', typeof workoutData);
 
     // // Serialize data so the template can read it
@@ -51,7 +52,7 @@ router.get('/profile', async (req, res) => {
     for(let i=0; i<workouts.length+1; i++){
         if(i<workouts.length){
             const exerciseData = await WorkoutExercise.findAll({
-                // where: { workout_id: workouts[i].id },
+                where: { workout_id: workouts[i].id },
                 // include: Exercise
             });
             const exercises = exerciseData.map((exercise) => exercise.get({ plain: true }));

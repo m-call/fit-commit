@@ -29,9 +29,30 @@ const populateFriendList = async () => {
   }
 }
 
+//workout_id 
+var workout_id; 
+const newWorkoutHandler = async (event) => 
+{
+   // new workout obj
+   let newWorkout = {
+    "date": new Date().toLocaleString("en-US")
+   }
+   console.log('NEW WORKOUT DATE', newWorkout.date.toLocaleString("en-US"));  
+   const response = await fetch('/api/workout', {
+    method: 'POST',
+    body: JSON.stringify(newWorkout),
+    headers: { 'Content-Type': 'application/json' },
+  });
+  // await 
+  // console.log('NEW WORKOUT RESPONSE', JSON.stringify(response))
+  let tempId = await response.json()
+  workout_id = tempId.id; 
+  console.log('WORKOUT_ID', workout_id); 
+}
+
 // TODO: ADDS workout to db. NEED TO FIX 
 // Comment: Who worked on this? 
-const newWorkoutHandler = async (event) => {
+const newWorkoutExerciseHandler = async (event) => {
   console.log('====on-submit-form======'); 
   event.preventDefault();
    // get user input from add workout form 
@@ -43,21 +64,25 @@ const newWorkoutHandler = async (event) => {
   console.log('sets: ', sets); 
   console.log('weight: ', weight); 
   console.log('exercise: ', exercise);
+
   //  if (weight && sets && reps && exercise) 
+  console.log('EXERCISE ID: ', parseInt(exercise)); 
   if (weight && sets && reps && exercise) 
    {
-     let newWorkout = {
+     let newWorkoutExercise = {
       "repetitions": reps, 
       "sets": sets, 
       "weight": weight, 
-      "time": 20, 
-      "workout_id": 2, 
-      "exercise_id": 2
+      // "time": 20,
+       // TODO: HOW TO FIND WORKOUT EXERCISE_ID  
+      "workout_id": workout_id, 
+      "exercise_id": parseInt(exercise)
      }
-     const response = await fetch('/api/workouts', {
+     console.log('NEW WORKOUT', newWorkoutExercise); 
+     const response = await fetch('/api/workoutExercise', {
       method: 'POST',
       // body: JSON.stringify({ username: username, password: password, friend_id:trainer1}),
-      body: JSON.stringify(newWorkout),
+      body: JSON.stringify(newWorkoutExercise),
       headers: { 'Content-Type': 'application/json' },
     });
      
@@ -74,9 +99,17 @@ const newWorkoutHandler = async (event) => {
 
 };
 
+// newWorkout 
+document 
+  .querySelector('#new-wk-button')
+  .addEventListener('click', newWorkoutHandler); 
+
 document
   .querySelector('#form-submit')
-  .addEventListener('submit', newWorkoutHandler);
+  .addEventListener('submit', newWorkoutExerciseHandler);
+
+
+  
 
 // display the user's friend list 
 populateFriendList();
