@@ -33,6 +33,7 @@ const populateFriendList = async () => {
 var workout_id; 
 const newWorkoutHandler = async (event) => 
 {
+  document.querySelector('#workout-selector-form').setAttribute("style","display: block;")
    // new workout obj
    let newWorkout = {
     "date": new Date().toLocaleString("en-US")
