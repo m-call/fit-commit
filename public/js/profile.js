@@ -85,29 +85,39 @@ const newWorkoutExerciseHandler = async (event) => {
       body: JSON.stringify(newWorkoutExercise),
     });
 
-    response = await fetch('/api/scores', {
+    let scoreResponse = await fetch('/api/scores/', {
       method: 'GET',
     });
 
-    console.log(response); // NEEDS USER SPECIFIC SCORES
-
     const thisScore = reps * sets;
+    // console.log(thisScore);
 
-    const resScore = await response.json();
-    const runningTotal = resScore.overall_score;
-    console.log(runningTotal);
+    let resScore = await scoreResponse.json();
+    let runningTotal = 0;
+
+    if (resScore[resScore.length - 1].overall_score) {
+      // console.log('add');
+      runningTotal = resScore[resScore.length - 1].overall_score;
+      console.log(runningTotal);
+    } else {
+      runningTotal += 0;
+    }
 
     let workoutScore = {
-      overall_score: parseInt(runningTotal + thisScore),
+      overall_score: parseInt(thisScore),
       weekly_score: parseInt(runningTotal + thisScore),
       monthly_score: parseInt(runningTotal + thisScore),
     };
 
-    response = await fetch('/api/scores', {
+    console.log(workoutScore);
+
+    let scoreUpdate = await fetch('/api/scores', {
       method: 'POST',
       body: JSON.stringify(workoutScore),
       headers: { 'Content-Type': 'application/json' },
     });
+
+    // console.log(await scoreUpdate.json());
 
     if (response.ok) {
       // document.location.replace('/profile');

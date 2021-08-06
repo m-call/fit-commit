@@ -10,12 +10,13 @@ async function getScores() {
   });
 
   let scoresTemp = await response.json();
+  console.log(scoresTemp);
 
   for (let i = 0; i < scoresTemp.length; i++) {
-    scores.push(scoresTemp[i].overall_score);
+    scores.push(scoresTemp[i].weekly_score);
   }
 
-  console.log(scores);
+  // console.log(scores);
 }
 
 const graphAll = async () => {
@@ -37,6 +38,7 @@ const graphAll = async () => {
         fill: false,
         borderColor: 'rgba(255, 255, 0, 1)',
         showLine: true,
+        lineTension: 0.25,
       },
     ],
   };
@@ -97,6 +99,7 @@ const graphAll = async () => {
       },
       responsive: false,
       maintainAspectRatio: false,
+      bezierCurve: true,
     },
   });
 };
