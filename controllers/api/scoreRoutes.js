@@ -4,11 +4,12 @@ const { Score, User } = require('../../models');
 // POST: create new score 
 router.post('/', async (req, res) => {
     try {
-        console.log(req.body)
+      console.log(req.body);
       const newScore = await Score.create({
         ...req.body,
+        // week_id: req.session.week_id,
+        week_id: 1, //placeholder until week_id is properly handled
         user_id: req.session.user_id,
-        week_id: req.session.week_id,
       });
   
       res.status(200).json(newScore);
