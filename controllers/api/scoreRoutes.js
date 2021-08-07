@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { response } = require('express');
 const { Score, User } = require('../../models');
 
 // POST: create new score
@@ -25,6 +26,12 @@ router.get('/includeuser', async (req, res) => {
     const scoreData = await Score.findAll({
       include: [{ model: User }],
     });
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+
+      res.status(200).json(userData);
+    });
     res.json(scoreData);
   } catch (err) {
     res.status(500).json(err);
@@ -34,7 +41,6 @@ router.get('/includeuser', async (req, res) => {
 // GET scores by user id
 router.get('/', async (req, res) => {
   // find one category by its `user id` value
-
   try {
     const scoreData = await Score.findAll({
       where: {
@@ -42,7 +48,8 @@ router.get('/', async (req, res) => {
       },
       // include: [{ model: User }],
     });
-    res.json(scoreData);
+    console.log('SCORE DATA:', scoreData); 
+    res.json(scoreData); 
   } catch (err) {
     res.status(500).json(err);
   }

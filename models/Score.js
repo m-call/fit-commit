@@ -24,6 +24,7 @@ Score.init(
     overall_score: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue:2
     },
     weekly_score: {
       type: DataTypes.INTEGER,
