@@ -15,7 +15,7 @@
               <th>Name</th>
               {{!-- <th>Score</th> --}}
               {{!-- <th>Weekly</th> --}}
-              <th>Score</th>
+              <th> Score</th>
               {{!-- <th>Monthly</th>  --}}
           </tr>
     </thead>
@@ -25,11 +25,19 @@
     {{#each usersLb as |user| }}
             <tr>
                 <td><span>{{user.full_name}}</span></td>
+                 {{!-- <td><span>{{getUserScore user}}</span></td> --}}
                 {{#each user.scores}}
+                  {{!-- <td><span>{{scores.length}}</span></td> --}}
+                 <td><span>{{this.weekly_score}}</span></td>
+                 {{!-- <td><span id="score"></span></td> --}}
+                 {{!-- <tc> <span>{{scores.length}}</span></tc> --}}
                  {{!-- <td><span>{{this.weekly_score}}</span></td> --}}
-                 <td><span>{{this.overall_score}}</span></td>
+                   {{!-- {{#each this.weekly_score}}
+                        <td><span>{{length.weekly_score}}</span></td>
+                   {{/each}} --}}
+                 {{!-- <td><span>{{this.overall_score}}</span></td> --}}
                 {{!-- <td><span>{{this.monthly_score}}</span></td> --}}
-                {{/each}}
+                {{/each}} 
             </tr>
     {{/each}}
     </div>
@@ -41,4 +49,6 @@
  </tbody>
 
 </div>
+
+{{!-- <script src="./js/leaderboard.js"></script> --}}
 
