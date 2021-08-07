@@ -20,11 +20,16 @@
 </div>
 
 {{!-- Button to add workout --}}
- <button class="btn btn-primary" type="click" id="new-wk-button" style="background-color:rgb(196, 39, 39);">Add Workout</button>
+ 
 
 {{!-- Form/Button to add exercise  --}}
+{{!-- dont delete this --}}
 <div id='display-friends-list'></div>
+
+{{!-- determines if add workout form in shown --}}
+<div id='show-add-workout' style="display: none;">false</div>
 {{!-- Workout option --}}
+<div id='workout-selector-form' style="display: none;">
   <div class="col-md-6" id="shift2">
     <h2 id="Title">Add a workout!</h2>
     <div class="input-field white col s12" id="workout-select" style="width: 350px;">
@@ -57,7 +62,10 @@
     {{!-- <div class="form-group"> --}}
         <button class="btn btn-primary" type="submit" id="new-workout-button" style="background-color:rgb(196, 39, 39);">Add Exercise</button>
     {{!-- </div> --}}
-</form>
+    </form>
+</div>
+</div>
+<button class="btn btn-primary" type="click" id="new-wk-button" style="background-color:rgb(196, 39, 39);">Add Workout</button>
 
 {{!-- SPACE FOR CHART.JS INSIDE OF THE CARD BELOW --}}
 <canvas id="scores" width="1000px" height="400px"></canvas>
