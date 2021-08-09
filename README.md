@@ -24,6 +24,7 @@ Fit commit uses javascript for the frontend, handlebars for the html, node.js fo
 ## Table of Content
 -------------------
 * [Commands](#commands)
+* [Demonstration](#demonstration)
 * [License](#license)
 * [Contributing](#contributing)
 * [Questions](#questions)
@@ -45,6 +46,9 @@ Fit commit uses javascript for the frontend, handlebars for the html, node.js fo
 ## Commands
 node seeds/seeds.js 
 ndoemon server.js 
+
+## Demonstration
+https://drive.google.com/file/d/1UYam3TnUJOKkEid----cpH9g7Rh_kM5x/view?usp=sharing <br> 
 
 ## License 
 [MIT License](https://opensource.org/licenses/MIT)
